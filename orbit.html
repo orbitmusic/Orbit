@@ -4,11 +4,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Orbit: Tobias Pleß & Inga Fuhrmann</title>
-<link href="css/style.css" rel="stylesheet" type="text/css" />
+<link href="css/orbitStyle.css" rel="stylesheet" type="text/css" />
+<script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type="text/javascript" src="js/three.js"></script>
+<
 </head>
-<body>
+<body onload="init()">
    <header>
    	<div class="headerWrap">
     	<img class="logo" src="img/logo.png" alt="logo">
@@ -17,13 +18,15 @@
   <div id="mainWrap">
    		<nav>
    			<h3>Infobox</h3>
+   			
   		</nav>
-  		<main id="main">
+  		<canvas id="main" width="1500" height="700">
   		
-   		</main> 
+   		</canvas> 
   </div> 
-  <script type="text/javascript" src="js/circle.js"></script>
-  <script type="text/javascript" src="/examples/js/renderers/Projector.js"></script>
+  <script type="text/javascript" src="js/orbitCircles.js"></script>
+  <script type="text/javascript" src="js/contextMenu.js"></script>
+
  
 </body>
 </html>
