@@ -1,6 +1,6 @@
 var stage;
 var circleGroup = new createjs.Container();
-var lineGroup = new createjs.Container();
+lineGroup = new createjs.Container();
 function init() {
 	stage = new createjs.Stage("main");
 	stage.mouseMoveOutside = true;
@@ -33,26 +33,28 @@ function init() {
     dashedCircle.x = 750;
     dashedCircle.y = 350;
     circleGroup.addChild(dashedCircle);
+    
+//LineGroup Container    
     lineGroup.x = 750;
     lineGroup.y = 350;
-    
     lineGroup.regX = 750;
     lineGroup.regY = 350;
-    
-//lineTo
-   
+//"Komet"    
+//Line   
     var line = new createjs.Shape();
     line.graphics.beginStroke("#c4c6ca").moveTo(750, 350).lineTo(750, 200);
     line.regX = 0;
     line.regY = 0;
+    line.setBounds(0, 0, 1, 150);
     lineGroup.addChild(line);
-    stage.update();
-   
-//circleLine
-	var circleLine = new createjs.Shape();
+    stage.update(); 
+//Circle
+	circleLine = new createjs.Shape();
 	circleLine.graphics.beginFill("#7087de").drawCircle(0, 0, 15);
 	circleLine.x = 750;
 	circleLine.y = 200;
+	circleLine.setBounds(0, 200, 15, 15);
+	lineGroup.addChild(line);
     lineGroup.addChild(circleLine);
 	stage.addChild(lineGroup);
 	stage.addChild(circleGroup);
@@ -61,16 +63,9 @@ function init() {
 	createjs.Ticker.addEventListener("tick", function(){
 		stage.update();
 	});
-
-//Zeiger bewegen
-	circleLine.on("pressmove", function(evt) {
-		var rads = Math.atan2(stage.mouseY - lineGroup.y, stage.mouseX - lineGroup.x);
-	  
-	  var angle = rads * (180 / Math.PI);
-	//  console.log("angle: "+ angle);
-	  lineGroup.rotation = angle + 90;
-
-	});
-	
+	stage.update();
 }
+
+
 	
+
