@@ -6,6 +6,7 @@ $( window ).on( "load", function() {
 
 //Komet um den Mittelpunkt rotieren lassen
 function rotateKomet() {
+	console.log('Am rotieren');
 	circleLine.on("pressmove", function(evt) {
 	rads = Math.atan2(stage.mouseY - lineGroup.y, stage.mouseX - lineGroup.x); 
     var angle = rads * (180 / Math.PI);
