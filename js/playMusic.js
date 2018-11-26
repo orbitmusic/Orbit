@@ -1,4 +1,4 @@
-//TEST-functions
+//Datei nur fuer den Test-Gebrauch
 
 var playStopButton = document.getElementById("mainWrap");
 
