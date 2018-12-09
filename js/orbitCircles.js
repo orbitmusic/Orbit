@@ -45,3 +45,7 @@ function init() {
 	});
 	stage.update();
 }
+
+
+	
+
