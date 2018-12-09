@@ -18,18 +18,23 @@
   <div id="mainWrap" >
    		<nav>
    			<h3>Infobox</h3>
-   			
-   			
+   			<div id="navSettings">
+   				<div id="pegel" class="settings" name="Pegel"></div>
+   				<div id="gain" class="settings" name="Gain"></div>
+   				<div id="panning" class="settings" name="Panning"></div>
+   				<div id="delay" class="settings" name="Delay"></div>
+   				
+   			</div>
+   			<div class="settingsLabel"> </div>
   		</nav>
+   			
   		<canvas id="main" width="1500" height="700" ondrop="dropHandler(event)" ondragover="dragOverHandler(event)">
    		</canvas> 
 
   </div> 
-  
-     <script type="text/javascript" src="js/transformKomet.js"></script>
+  	 <script type="text/javascript" src="js/symbolArray.js"></script> 
+  	 <script type="text/javascript" src="js/addKomet.js"></script>
      <script type="text/javascript" src="js/orbitCircles.js"></script>
-     <script type="text/javascript" src="js/contextMenu.js"></script>
-     <!-- <script type="text/javascript" src="js/selection.js"></script>   -->  
      <script type="text/javascript" src="js/dropConfig.js"></script>
      <!--<script src="js/playMusic.js"></script> Nur fuer den Test-Gebrauch-->
  
