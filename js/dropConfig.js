@@ -1,15 +1,16 @@
-
+var music = new Audio();
 function dropHandler(ev){
-	console.log('File(s) dropped');
+	console.log('File(s) wurden gedroppt');
 
     ev.preventDefault();    //File wird nicht automatisch durch den Browser geöffnet
     
     if(ev.dataTransfer.items){
         for (var i=0; i<ev.dataTransfer.items.length;i ++){   //Nutzung bei mehreren gedroppten Files
-            if(ev.dataTransfer.items[i].kind ==='file'){  
-                var file= ev.dataTransfer.items[i].getAsFile(); //Returns file object if dragged item is a file
+            if(ev.dataTransfer.items[i].kind ==='file'){  		//Sofern gedroppte Daten vom Type File sind
+                var file= ev.dataTransfer.items[i].getAsFile(); //Erstellt File Objekt, wenn If.Bedingung zutreffend
                 console.log('...file[' +i+ '].name= '+file.name);
-
+				addMusic(file);
+				console.log('...file[' +i+ '].name= '+file.name+" added to MUSIC");
             }
         }
     } else{
@@ -17,13 +18,16 @@ function dropHandler(ev){
             console.log('...file[' +i+ '].name = ' +ev.dataTransfer.files[i].name);
         }
     }
-    removeDragData(ev)    //Calls function()
+	
+	
+   
+    removeDragData(ev)    //Ruft function() auf
 }
 
 function dragOverHandler(ev) {	
-  console.log('File(s) in drop zone');   //File wird nicht automatisch durch den Browser geöffnet
+  console.log('File(s) oberhalb der Drop-Zone');  
  
-  ev.preventDefault();
+  ev.preventDefault(); 	 //File wird nicht automatisch durch den Browser geöffnet
 }
 
 function removeDragData(ev) {
@@ -42,7 +46,7 @@ function removeDragData(ev) {
   }
 }
 
-function musicDroppedTrue(){  //Unglücklich mit "Einfacher" Lösung :/
+function musicDroppedTrue(){  //Visuelle Bestätigung für Datei-Drop
     
 	var greenCircle = new createjs.Shape();
     greenCircle.graphics.beginStroke("#40FF00").drawCircle(0, 0, 300);
@@ -53,3 +57,6 @@ function musicDroppedTrue(){  //Unglücklich mit "Einfacher" Lösung :/
 
 }
 
+function addMusic(){
+
+}
