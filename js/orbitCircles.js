@@ -1,36 +1,48 @@
 var stage;
 var circleGroup = new createjs.Container();
-
+var innerCircle;
+var center;
+var cmdCenter;
+var cmdInner;
+var cmdInnerFill;
+var cmdDashed;
+var cmdCircle;
 function init() {
 	stage = new createjs.Stage("main");
 	stage.mouseMoveOutside = true;
 	
-//center
-	var center = new createjs.Shape();
-    center.graphics.beginFill("#c4c6ca").drawCircle(0, 0, 5);
-    center.x = 750;
-    center.y = 350;
-    circleGroup.addChild(center);
+
 
 //inner circle
-    var innerCircle = new createjs.Shape();
-    innerCircle.graphics.beginStroke("#c4c6ca").drawCircle(0, 0, 50);
+    innerCircle = new createjs.Shape();
+    cmdInner = innerCircle.graphics.beginStroke("rgb(196,198,202)").command;
+    cmdInnerFill = innerCircle.graphics.beginFill("rgb(3,29,126)").command;
+    innerCircle.graphics.drawCircle(0, 0, 50);
     innerCircle.x = 750;
     innerCircle.y = 350;
     circleGroup.addChild(innerCircle);
 	
+  //center
+	var center = new createjs.Shape();
+	cmdCenter = center.graphics.beginFill("rgb(196,198,202)").command;
+    center.graphics.drawCircle(0, 0, 5);
+    center.x = 750;
+    center.y = 350;
+    circleGroup.addChild(center);
+    
 //dashedCircle 
     dashedCircle = new createjs.Shape();
-    dashedCircle.graphics.beginStroke("#c4c6ca").setStrokeDash([10, 10]).drawCircle(0, 0, 150);
+    cmdDashed = dashedCircle.graphics.beginStroke("rgb(196,198,202)").command
+    dashedCircle.graphics.setStrokeDash([10, 10]).drawCircle(0, 0, 150);
     dashedCircle.x = 750;
     dashedCircle.y = 350;
     circleGroup.addChild(dashedCircle);
     
     var circle = new createjs.Shape();
-    circle.graphics.beginStroke("#c4c6ca").drawCircle(0, 0, 300);	//Tobi 0912
+    cmdCircle = circle.graphics.beginStroke("rgb(196,198,202)").command;
+    circle.graphics.drawCircle(0, 0, 300);
     circle.x=750;													//Tobi 0912		Bisher nicht als circle hinzugefügt
-    circle.y=350;													//Tobi 0912
-   
+    circle.y=350;													//Tobi 0912  
     circleGroup.addChild(circle);									//Tobi 0912
 
    // dashedCircle.x = 750;											//Tobi 0912 Doppelt?

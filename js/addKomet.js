@@ -2,7 +2,8 @@ temp = 0;
 var number;
 nameOfElement = "";
 var spacePressed = false;
-
+var cmdKomet = [];
+var updatArray= [];
 $( document ).ready(function(event)  {
 	
 	changeLabel();
@@ -117,7 +118,7 @@ function addKometSettings(){
 							
 							shapesOfArray = [];	
 							shapesOfArray.push(line, cont, shape, color, rote);
-
+							
 							
 							}
 							
@@ -190,7 +191,8 @@ var shapesOfArray = [];
 	    		
 	    	stage.update(); 
 	    	//Circle	
-	    	shape[i].graphics.beginFill(color[i]).drawCircle(0, 0, 15);
+	    	cmdKomet[i] = shape[i].graphics.beginFill(color[i]).command;
+	    	shape[i].graphics.drawCircle(0, 0, 15);
 	    	shape[i].x = 750;
 	    	shape[i].y = 100;
 	    	shape[i].setBounds(0, 100, 15, 15);
@@ -218,6 +220,7 @@ var shapesOfArray = [];
 
 	    	//Mausposition ermitteln				 
 	    	shape[i].on("mousedown", function (event) {
+	    		
 	    		
 	    		return function(){
 	    					 			
@@ -255,6 +258,35 @@ var shapesOfArray = [];
 	    				  }
 	    						 }
 	    	 }(i));
+	    	
+	    	 updateColor();
+	    	
+	    	 
+	 //Hinzugefügten Kometen aktuelle Farbe zuweisen   		 
+	   function updateColor(){ 	
+	   	if(clickTemp == 1){	
+	   		
+	    	 if(number == 0){
+	    		 cmdKomet[i].style = "" + colorKometen[0] + "";
+	    		 
+	    	 }
+	    	 if(number == 1){
+	    		 cmdKomet[i].style = "" + colorKometen[1] + "";
+	    		 
+	    	 }
+	    	 if(number == 2){
+	    		 cmdKomet[i].style = "" + colorKometen[2] + "";
+	    		
+	    	 }
+	    	 if(number == 3){
+	    		 cmdKomet[i].style = "" + colorKometen[3] + "";
+	    		
+	    	 }
+	    	 stage.update();
+
+	   	}
+	   }
+		
 	    							stage.update();
 	    				
 	}	
@@ -262,8 +294,8 @@ var shapesOfArray = [];
  }
 	
 	 
+
  }
- 
  function spaceDef() {
  
 	
