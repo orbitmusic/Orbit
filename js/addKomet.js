@@ -3,7 +3,7 @@ var number;
 nameOfElement = "";
 var spacePressed = false;
 var cmdKomet = [];
-var updatArray= [];
+var updateArray= [];
 $( document ).ready(function(event)  {
 	
 	changeLabel();
@@ -71,6 +71,8 @@ function changeLabel(event) {
 //Kometen Erkennungsnummern zuweisen
 function addNumberTo () {
 	nameOfElement = $(event.target).attr('name');	
+	
+	if(updateArray.length < 4){
 	 setNumber();
 	 addKomet(event);
 	 
@@ -78,27 +80,28 @@ function addNumberTo () {
 		 
 		 if(nameOfElement == "Pegel"){
 			 number = 0;
-		
+			 updateArray.push(number);
 		 }
 		 else if(nameOfElement == "Gain"){
 			 number = 1;
-		
+			 updateArray.push(number);
 		 }
 		 else if(nameOfElement == "Panning"){
 			 number = 2;
-		
+			 updateArray.push(number);
 		 }
 		 else if(nameOfElement == "Delay"){
 			 number = 3;
-			 
+			 updateArray.push(number);
 		 }
 		 else{
 			 number = null;
 		 }
 		
+	 }
+  }
+console.log(updateArray.length);
 }
-	
-}	
 //Eigenschaften der Kometen aus Array auslesen und anhand der number filtern
 function addKometSettings(){
 			 if(number != null){
