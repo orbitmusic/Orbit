@@ -1,7 +1,7 @@
 var music = new Audio();
 function dropHandler(ev){
 	console.log('File(s) wurden gedroppt');
-
+	
     ev.preventDefault();    //File wird nicht automatisch durch den Browser geöffnet
     
     if(ev.dataTransfer.items){
@@ -9,8 +9,11 @@ function dropHandler(ev){
             if(ev.dataTransfer.items[i].kind ==='file'){  		//Sofern gedroppte Daten vom Type File sind
                 var file= ev.dataTransfer.items[i].getAsFile(); //Erstellt File Objekt, wenn If.Bedingung zutreffend
                 console.log('...file[' +i+ '].name= '+file.name);
+               
+               
+
 				addMusic(file);
-				console.log('...file[' +i+ '].name= '+file.name+" added to MUSIC");
+				console.log("Successfull run addMusic()");
             }
         }
     } else{
@@ -25,8 +28,7 @@ function dropHandler(ev){
 }
 
 function dragOverHandler(ev) {	
-  console.log('File(s) oberhalb der Drop-Zone');  
- 
+  console.log('File(s) oberhalb der Drop-Zone');   
   ev.preventDefault(); 	 //File wird nicht automatisch durch den Browser geöffnet
 }
 
@@ -36,17 +38,15 @@ function removeDragData(ev) {
   if (ev.dataTransfer.items) {
     // Use DataTransferItemList interface to remove the drag data
     ev.dataTransfer.items.clear();
-    musicDroppedTrue(); //TEST
-   
+    musicDroppedTrue(); //TEST   
   } else {
     // Use DataTransfer interface to remove the drag data
     ev.dataTransfer.clearData();
-    musicDroppedTrue(); //TEST
-   
+    musicDroppedTrue(); //TEST  
   }
 }
 
-function musicDroppedTrue(){  //Visuelle Bestätigung für Datei-Drop
+function musicDroppedTrue(){  //Visuelle Bestätigung für Datei-Drop -> Grüner Ring
     
 	var greenCircle = new createjs.Shape();
     greenCircle.graphics.beginStroke("#40FF00").drawCircle(0, 0, 300);
@@ -54,9 +54,12 @@ function musicDroppedTrue(){  //Visuelle Bestätigung für Datei-Drop
     greenCircle.y=350;					
     circleGroup.addChild(greenCircle);
     stage.update();
-
 }
 
-function addMusic(){
-
+function addMusic(file){
+	
+	music = new Audio(file.name);	//Funktioniert nur, weil das File im Ordner ist -> Überarbeitung erforderlich?
+	console.log("Successfull added file to Audio music");
+	//console.log(file.path);	//Funktioniert nicht
+	music.play();
 }
