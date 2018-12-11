@@ -97,3 +97,11 @@ nav #navSettings{
 	height: 35px;
 	color: white;
 }
+#infoText{
+	display: none;
+	position:absolute;
+	color: white;
+	width: 50px;
+	height:20px;
+	
+}

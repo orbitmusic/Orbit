@@ -3,9 +3,9 @@ var number;
 nameOfElement = "";
 var spacePressed = false;
 var cmdKomet = [];
-var isClicked
+
 $( document ).ready(function(event)  {
-	
+
 	changeLabel();
 	addNumbers();
 	
@@ -100,7 +100,7 @@ function addNumberTo () {
 		
 	 
   }
-console.log(updateArray.length);
+
 }
 //Eigenschaften der Kometen aus Array auslesen und anhand der number filtern
 function addKometSettings(){
@@ -161,6 +161,7 @@ var shapesOfArray = [];
 
 	 var cont = new Array();
 	 var shape= new Array();
+	 var name= new Array();
 	 var line= new Array();
 	 var rote= new Array();
 
@@ -171,6 +172,7 @@ var shapesOfArray = [];
 			line[i] = containerArray[i][0];
 			cont[i] = containerArray[i][1];
 			shape[i] = containerArray[i][2];
+			name[i] = containerArray[i][2];
 			color[i] = containerArray[i][3];
 			rote[i] = containerArray[i][4];
 			
@@ -209,6 +211,9 @@ var shapesOfArray = [];
 	    	stage.update();
 	    				
 	    	//Events in Closures
+	    	
+	    	
+	    	
 	    	//Komet um den Mittelpunkt rotieren
 	    	shape[i].addEventListener('pressmove', (function(temp) {
 	    						 
@@ -263,7 +268,26 @@ var shapesOfArray = [];
 	    	 }(i));
 	    	
 	    	 updateColor();
-	    	
+	    	//Info bei Mouseover anzeigen
+		    	shape[i].addEventListener('mouseover', (function(event) {
+		    		
+		    		return function(event){
+		    			
+		    			 var left = Math.abs(-(shape[i].x - stage.mouseX) );
+		    		     var top = Math.abs(shape[i].y - stage.mouseY);
+		    		     $('#infoText').css({top: top + 110 ,left: left + 750, zindex: 100}).show();
+		    		     $('#infoText').text(name[i]);
+		    		      console.log (left, top);
+		    			
+		    		}
+		    		  }(i)));
+		    	
+		    	shape[i].addEventListener('mouseout', (function(event) {
+		    		return function(){
+		    			$('#infoText').hide();
+		    				console.log(name[i]);
+		    		}
+		    		  }(i))); 	
 	    	 
 	 //Hinzugefügten Kometen aktuelle Farbe zuweisen   		 
 	   function updateColor(){ 	

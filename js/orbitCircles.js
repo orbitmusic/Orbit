@@ -10,7 +10,7 @@ var cmdCircle;
 function init() {
 	stage = new createjs.Stage("main");
 	stage.mouseMoveOutside = true;
-	
+	stage.enableMouseOver(20);  
 
 
 //inner circle
