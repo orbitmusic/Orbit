@@ -3,7 +3,7 @@ var number;
 nameOfElement = "";
 var spacePressed = false;
 var cmdKomet = [];
-
+var body = document.getElementsByTagName("body");
 $( document ).ready(function(event)  {
 
 	changeLabel();
@@ -71,8 +71,6 @@ function changeLabel(event) {
 //Kometen Erkennungsnummern zuweisen
 function addNumberTo () {
 	nameOfElement = $(event.target).attr('name');	
-	
-	
 	 setNumber();
 	 addKomet(event);
 	 
@@ -139,6 +137,7 @@ var rads;
 var angle;
 var containerArray = [];
 var shapesOfArray = [];
+var coloredAddedKomet = [];
  function addKomet(event){
 	 
 	 //Werte aus Komet-Array auslesen
@@ -267,21 +266,25 @@ var shapesOfArray = [];
 	    						 }
 	    	 }(i));
 	    	
-	    	 updateColor();
+	    	// updateColor(i);
 	    	//Info bei Mouseover anzeigen
 		    	shape[i].addEventListener('mouseover', (function(event) {
 		    		
 		    		return function(event){
 		    			
-		    			 var left = Math.abs(-(shape[i].x - stage.mouseX) );
-		    		     var top = Math.abs(shape[i].y - stage.mouseY);
-		    		     $('#infoText').css({top: top + 110 ,left: left + 750, zindex: 100}).show();
+		    			// var left = Math.abs(-(shape[i].x - stage.mouseX) );
+		    		    // var top = Math.abs(shape[i].y - stage.mouseY);
+		    		     $('#infoText').
+//		    		     css({
+//		    		    	 top: top + 110 ,
+//		    		    	 left: left + 750})
+		    		    	 show();
 		    		     $('#infoText').text(name[i]);
-		    		      console.log (left, top);
+		    		   //   console.log (left, top);
 		    			
 		    		}
 		    		  }(i)));
-		    	
+		    	//Info bei Mouseout ausblenden 
 		    	shape[i].addEventListener('mouseout', (function(event) {
 		    		return function(){
 		    			$('#infoText').hide();
@@ -290,29 +293,7 @@ var shapesOfArray = [];
 		    		  }(i))); 	
 	    	 
 	 //Hinzugefügten Kometen aktuelle Farbe zuweisen   		 
-	   function updateColor(){ 	
-	   	if(clickTemp == 1){	
-	   		
-	    	 if(number == 0){
-	    		 cmdKomet[i].style = "" + colorKometen[0] + "";
-	    		 
-	    	 }
-	    	 if(number == 1){
-	    		 cmdKomet[i].style = "" + colorKometen[1] + "";
-	    		 
-	    	 }
-	    	 if(number == 2){
-	    		 cmdKomet[i].style = "" + colorKometen[2] + "";
-	    		
-	    	 }
-	    	 if(number == 3){
-	    		 cmdKomet[i].style = "" + colorKometen[3] + "";
-	    		
-	    	 }
-	    	 stage.update();
-
-	   	}
-	   }
+	   
 		
 	    							stage.update();
 	    				
@@ -336,3 +317,35 @@ var shapesOfArray = [];
 	  }
 });
  }
+ //Farbe der Kometen ändern --> Fehler bei der Aktualisierung
+// function updateColor(i){ 	
+//	 
+//	   	if(clickTemp == 1){	
+//	   		
+//	   		addColor(i);
+//	   	}
+//	   
+// }
+//
+// function addColor(i){
+//
+//	 if(number == 0){
+//		 cmdKomet[i].style = "" + colorKometen[0] + "";
+//		 
+//	 }
+//	 if(number == 1){
+//		 cmdKomet[i].style = "" + colorKometen[1] + "";
+//		 
+//	 }
+//	 if(number == 2){
+//		 cmdKomet[i].style = "" + colorKometen[2] + "";
+//		
+//	 }
+//	 if(number == 3){
+//		 cmdKomet[i].style = "" + colorKometen[3] + "";
+//		
+//	 }
+//	 
+//	 stage.update();
+//	
+// }

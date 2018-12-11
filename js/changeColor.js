@@ -40,33 +40,35 @@ function setColorBgrd (){
 //cmdDashed.style = "rgb(" + b + "," + g + "," + r +")";
 //cmdCircle.style = "rgb(" + b + "," + g + "," + r +")";
 //}
+//Veränderung der Farbe der Kometen --> wird momentan nicht aufgerufen
 function getColorKomet (){
 r +=50;
 
-$('#pegel').css("background-color" , "rgb(" + g + "," + g + "," + r +")" );
-pegelKomet = $('#pegel').css("background-color");
-$('#gain').css("background-color", "rgb(" + b + "," + r + "," + g +")" );
-gainKomet = $('#gain').css("background-color");
-$('#panning').css("background-color", "rgb(" + g + "," + b + "," + b +")" );
-panningKomet = $('#panning').css("background-color");
-$('#delay').css("background-color", "rgb(" + r + "," + r + "," + b +")" );
-delayKomet = $('#delay').css("background-color");
+		$('#pegel').css("background-color" , "rgb(" + g + "," + g + "," + r +")" );
+			pegelKomet = $('#pegel').css("background-color");
+		$('#gain').css("background-color", "rgb(" + b + "," + r + "," + g +")" );
+			gainKomet = $('#gain').css("background-color");
+		$('#panning').css("background-color", "rgb(" + g + "," + b + "," + b +")" );
+			panningKomet = $('#panning').css("background-color");
+		$('#delay').css("background-color", "rgb(" + r + "," + r + "," + b +")" );
+			delayKomet = $('#delay').css("background-color");
+
 colorKometen.push(pegelKomet, gainKomet, panningKomet, delayKomet );
 
 return pegelKomet, gainKomet, panningKomet, delayKomet;
 
 }
-
+function updateColors(){
+	
+}
 //vielleicht doch Pressmove?
 function changeColorBgrd(){	
 	innerCircle.on("mousedown", function (event) {
-	clickTemp = 1;
+	//clickTemp = 1;
 	getMousePosition();
 	calculateRGB();
 	setColorBgrd ();
-	getColorKomet();
-
-
+//	getColorKomet();
 //	console.log(r, g, b);
 	
 	//
