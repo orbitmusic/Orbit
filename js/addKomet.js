@@ -3,7 +3,7 @@ var number;
 nameOfElement = "";
 var spacePressed = false;
 var cmdKomet = [];
-var updateArray= [];
+var isClicked
 $( document ).ready(function(event)  {
 	
 	changeLabel();
@@ -49,22 +49,22 @@ function changeLabel(event) {
 //
  function addNumbers() {
 	 
-	 $('#pegel').on('click', function(event) {
+	 $('#pegel').one('click', function(event) {
 		 addNumberTo();
 		
 		
  });
-	 $('#gain').on('click', function(event) {
+	 $('#gain').one('click', function(event) {
+		 addNumberTo();
+		 
+ });
+	 $('#panning').one('click', function(event) {
 		 addNumberTo();
 		
  });
-	 $('#panning').on('click', function(event) {
+	 $('#delay').one('click', function(event) {
 		 addNumberTo();
-		
- });
-	 $('#delay').on('click', function(event) {
-		 addNumberTo();
-		
+		 
  }); 
 	
  }  
@@ -72,7 +72,7 @@ function changeLabel(event) {
 function addNumberTo () {
 	nameOfElement = $(event.target).attr('name');	
 	
-	if(updateArray.length < 4){
+	
 	 setNumber();
 	 addKomet(event);
 	 
@@ -80,25 +80,25 @@ function addNumberTo () {
 		 
 		 if(nameOfElement == "Pegel"){
 			 number = 0;
-			 updateArray.push(number);
+			
 		 }
 		 else if(nameOfElement == "Gain"){
 			 number = 1;
-			 updateArray.push(number);
+			 
 		 }
 		 else if(nameOfElement == "Panning"){
 			 number = 2;
-			 updateArray.push(number);
+			
 		 }
 		 else if(nameOfElement == "Delay"){
 			 number = 3;
-			 updateArray.push(number);
+			 
 		 }
 		 else{
 			 number = null;
 		 }
 		
-	 }
+	 
   }
 console.log(updateArray.length);
 }
