@@ -1,101 +1,46 @@
-//Datei nur fuer den Test-Gebrauch
+var playStopButton = document.getElementById("playStopButton");
+var isPlaying=false;
 
-var playStopButton = document.getElementById("mainWrap");
+var musicPlay = new Audio();
 
-var isPlaying = false;
+//var context = new AudioContext();
 
+var firstInitiate=false;
 
+function initiatePlayMusic(){
+     console.log(getMusicPath + "Wird aufgespielt_1"); 
+    musicPlay = new Audio(getMusicPath());
+     console.log(getMusicPath + "Wird aufgespielt_2");   
+}
 
-var context = new AudioContext();
-
-var sound = new Audio("sounds/music.wav");
-
-sound.crossOrigin = "anonymous";
-
-var source = context.createMediaElementSource(sound);
-
-var gain = context.createGain();
-
-var stereoPanner = context.createStereoPanner();
-
-var delay = context.createDelay(4.0);
+function playDroppedMusic(){
+music2 = document.getElementById("music");
+}
 
 
 
-source.connect(gain);
-
-gain.connect(delay);
-
-delay.connect(stereoPanner);
-
-stereoPanner.connect(context.destination);
-
-
-/*
-document.getElementById("gainSlider").addEventListener("input", function (e) {
-
-    var gainValue = (this.value / 20);
-
-    document.getElementById("gainOutput").innerHTML = gainValue + " dB";
-
-    gain.gain.value = gainValue;
-
-});
 
 
 
-document.getElementById("panningSlider").addEventListener("input", function (e) {
-
-    var panValue = (this.value - 50) / 50;
-
-    document.getElementById("panningOutput").innerHTML = panValue + " LR";
-
-    stereoPanner.pan.value = panValue;
-
-});
 
 
 
-document.getElementById("delaySlider").addEventListener("input", function (e) {
-
-    var delayValue = (this.value / 25);
-
-    document.getElementById("delayOutput").innerHTML = delayValue + " sec";
-
-    delay.delayTime.value = delayValue;
-
-});
-*/
-
-
-playStopButton.addEventListener("click", function (e) {
-
-    if (isPlaying) {
-
-        sound.pause();
-
-        playStopButton.innerHTML = "Play";
-
-    } else {
-
-        sound.play();
-
-        playStopButton.innerHTML = "Stop";
-
+playStopButton.addEventListener("click", function(){
+    if(firstInitiate){
+         console.log('Musik wurde bereits geladen');  
+    }else {
+         initiatePlayMusic();
+         firstInitiate=true;
     }
-
-
-
-    isPlaying = !isPlaying;
-
-});
-
-
-
-sound.addEventListener("ended", function (e) {
-
-    isPlaying = false;
-
-    playStopButton.innerHTML = "Play";
-
+   
+    if(isPlaying){
+        music.pause();
+        playStopButton.innerHTML="Play";
+        console.log('Musik pausiert');   
+    } else {
+        music.play();
+        playStopButton.innerHTML = "Stop";
+        console.log('Musik startet');   
+    }
+    isPlaying=!isPlaying
 });

@@ -222,6 +222,8 @@ var coloredAddedKomet = [];
 	    			angle = rads * (180 / Math.PI);
 	    			cont[i].rotation = angle + 90;
 	    		    console.log(cont[i].x, cont[i].y);
+	    		    console.log(cont[i].regX, cont[i].regY);
+	    		    console.log(line[i]);
 	    					       }
 	    	  }(i)));
 

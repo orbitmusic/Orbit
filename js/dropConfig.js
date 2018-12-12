@@ -1,4 +1,6 @@
 var music = new Audio();
+var fileName = "";
+
 function dropHandler(ev){
 	console.log('File(s) wurden gedroppt');
 	
@@ -59,7 +61,15 @@ function musicDroppedTrue(){  //Visuelle Bestätigung für Datei-Drop -> Grüner
 function addMusic(file){
 	
 	music = new Audio(file.name);	//Funktioniert nur, weil das File im Ordner ist -> Überarbeitung erforderlich?
+	this.fileName = file.name;
 	console.log("Successfull added file to Audio music");
 	//console.log(file.path);	//Funktioniert nicht
+	getMusicPath();
 	music.play();
+}
+
+function getMusicPath(){
+	console.log(fileName + " ist von txt_1");
+	return fileName;
+	
 }

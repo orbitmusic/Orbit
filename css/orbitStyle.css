@@ -109,3 +109,17 @@ nav #navSettings{
 	top: 50px;
 	left: 750px;
 }
+
+#playStopButton {
+
+    background-color: #de793a;
+
+    border: none;
+
+    color: #ffffff;
+
+    font-size: 1.5em;
+
+    padding: 0.5em 1.5em;
+
+}
