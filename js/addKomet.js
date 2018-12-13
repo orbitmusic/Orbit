@@ -222,8 +222,9 @@ var coloredAddedKomet = [];
 	    			angle = rads * (180 / Math.PI);
 	    			cont[i].rotation = angle + 90;
 	    		    console.log(cont[i].x, cont[i].y);
-	    		    console.log(cont[i].regX, cont[i].regY);
-	    		    console.log(line[i]);
+	    		    console.log(line[i].regX, line[i].regY);
+	    		    console.log(cont[i].getTransformedBounds().height+"Höhe");
+	    		    console.log(cont[i].getTransformedBounds().width+"Breite");
 	    					       }
 	    	  }(i)));
 
@@ -258,6 +259,16 @@ var coloredAddedKomet = [];
 	    								
 	    				
 	    			scaleTemp = this.offset.y / this.initial.y;
+
+
+					//TEST Zeiger-Länge
+						var point = cont[i].getBounds().height;
+						heightLine = point * scaleTemp;
+						console.log(heightLine+"Liniengröße");
+					//TEST
+
+
+
 	    								
 	    		//	--> Scale-Maximun(y=100)
 	    				 if (scaleTemp < 1.02 ){	     
