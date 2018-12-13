@@ -62,14 +62,13 @@ function addMusic(file){
 	
 	music = new Audio(file.name);	//Funktioniert nur, weil das File im Ordner ist -> Überarbeitung erforderlich?
 	this.fileName = file.name;
-	console.log("Successfull added file to Audio music");
-	//console.log(file.path);	//Funktioniert nicht
-	getMusicPath();
+	//console.log("Successfull added file to Audio music");	
+	console.log("Successfull added "+getMusicPath()+" file to Audio music");
 	music.play();
 }
 
 function getMusicPath(){
-	console.log(fileName + " ist von txt_1");
+	console.log(fileName + " erfolgreich erkannt");
 	return fileName;
 	
 }

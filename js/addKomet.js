@@ -264,7 +264,8 @@ var coloredAddedKomet = [];
 					//TEST Zeiger-Länge
 						var point = cont[i].getBounds().height;
 						heightLine = point * scaleTemp;
-						console.log(heightLine+"Liniengröße");
+						console.log(heightLine+"Liniengröße und zahl: "+i);
+
 					//TEST
 
 
@@ -275,6 +276,8 @@ var coloredAddedKomet = [];
 	    				       cont[i].scaleY = scaleTemp;
 	    					  }
 	    			 stage.update();
+	    			 regulatePanning(heightLine);
+	    			 console.log(heightLine+"Liniengröße und zahl: "+i);
 	    				  }
 	    						 }
 	    	 }(i));
