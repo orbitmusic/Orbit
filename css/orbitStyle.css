@@ -109,17 +109,57 @@ nav #navSettings{
 	top: 50px;
 	left: 750px;
 }
-
-#playStopButton {
-
-    background-color: #de793a;
-
-    border: none;
-
-    color: #ffffff;
-
-    font-size: 1.5em;
-
-    padding: 0.5em 1.5em;
-
+#buttonWrap {
+	margin-left: 5%;
+	margin-top: 5%;
+	width: 200px;
+	height: 35px;
+	margin-top: 2%;
+	margin-bottom: 5%;
+	padding-bottom: 10%;
+	border-color: white;
+	border-style: none none solid none;
+	border-width: 1px;
 }
+#playStopButton {
+/* 	margin-left: 25%; */
+	display: flex;
+	flex-flow: row ;
+	margin-bottom: 10%;
+	
+	position: absolute;
+    background-color: transparent; 
+    border-color: white;
+    padding: 10px 20px 10px 30px;
+    float: left;
+    color: #ffffff;
+    font-weight: bold;
+}
+	
+
+#playStopButton:active {
+	
+	background-color: white;
+	color: #898a8c;	
+	}
+	
+#play {
+	display: visible;
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-left: 12px solid white;
+    border-bottom: 8px solid transparent;
+    margin-left: 5% !important;
+	margin-top: 5%;
+}
+
+#stop {
+	display: none;
+	width: 4px;
+    height: 16px;
+    border-right: 4px solid white;
+    border-left: 4px solid white;
+	margin-left: 5% !important;
+	margin-top: 5%;
+	}

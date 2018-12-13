@@ -78,10 +78,14 @@ playStopButton.addEventListener("click", function(){
     if(isPlaying){
         musicPlay.pause();
         playStopButton.innerHTML="Play";
+        $('#play').show();
+        $('#stop').hide();
         console.log('Musik pausiert');   
     } else {
         musicPlay.play();
         playStopButton.innerHTML = "Stop";
+        $('#play').hide();
+        $('#stop').show();
         console.log('Musik startet');   
         console.log("StereoPanner: "+stereoPanner.pan.value);
     }
