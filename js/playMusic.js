@@ -36,10 +36,14 @@ playStopButton.addEventListener("click", function(){
     if(isPlaying){
         music.pause();
         playStopButton.innerHTML="Play";
+        $('#play').show();
+        $('#stop').hide();
         console.log('Musik pausiert');   
     } else {
         music.play();
         playStopButton.innerHTML = "Stop";
+        $('#play').hide();
+        $('#stop').show();
         console.log('Musik startet');   
     }
     isPlaying=!isPlaying
