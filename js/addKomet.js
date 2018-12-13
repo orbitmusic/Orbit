@@ -115,6 +115,7 @@ function addKometSettings(){
 							shape = m.Name;
 							color = m.Farbe;
 							rote = m.Rotation;
+							
 //							drawSymbol = m.Symbol; //eventuell noch zum ändern der Symbole
 							
 							shapesOfArray = [];	
@@ -163,8 +164,8 @@ var coloredAddedKomet = [];
 	 var name= new Array();
 	 var line= new Array();
 	 var rote= new Array();
-
-	 
+	 var rote= new Array();
+	
 	 for(let i = 0; i < containerArray.length; i ++){ 
 		
 		for(let k = 0; k < 1; k ++){ 
@@ -211,8 +212,8 @@ var coloredAddedKomet = [];
 	    				
 	    	//Events in Closures
 	    	
-	    	
-	    	
+	    	 
+	    
 	    	//Komet um den Mittelpunkt rotieren
 	    	shape[i].addEventListener('pressmove', (function(temp) {
 	    						 
@@ -228,26 +229,29 @@ var coloredAddedKomet = [];
 	    					       }
 	    	  }(i)));
 
-	    	//Mausposition ermitteln				 
+	    	//Mausposition ermitteln		
+	    	
+	    	
 	    	shape[i].on("mousedown", function (event) {
-	    		
-	    		
+	  		
 	    		return function(){
-	    					 			
+	    			 			
 	    			this.initial = {
 	    					         x: Math.abs(-(cont[i].x - stage.mouseX)),
 	    					         y: Math.abs(cont[i].y - stage.mouseY)
 	    					       };
-	    					   	 			
+	    			
 	    					}
 	    	}(i));
 	    	
 	    	//Leerzeichen drücken
 	    	spaceDef();
 	    	
+	    	var heightLine;
 	    	//Komet verkleinern und vergrößern			 
 	    	 shape[i].on("pressmove", function(event) {	
-	    		 
+	    		
+	    		
 	    		 return function(){
 	    		//Maustaste drücken und Leerzeichen-Taste drücken um den Kometen in der Y-Achse zu ändern
 	    			if(spacePressed == true){	
@@ -261,10 +265,26 @@ var coloredAddedKomet = [];
 	    			scaleTemp = this.offset.y / this.initial.y;
 
 
-					//TEST Zeiger-Länge
-						var point = cont[i].getBounds().height;
-						heightLine = point * scaleTemp;
-						console.log(heightLine+"Liniengröße und zahl: "+i);
+					//TEST Kalkulieren der einzelnen Kometen
+	    			if(name[i] == "Pegel"){
+    					console.log(shape[i]);
+    					 
+    				 }
+    				 if(name[i] == "Gain"){
+    					 console.log(shape[i]);
+    					 
+    				 }
+    				 if(name[i] == "Panning"){
+    					var point = cont[i].getBounds().height;
+ 						heightLine = point * scaleTemp;
+    					
+    				 }
+    				 if(name[i] == "Delay"){
+    					 console.log(shape[i]);
+    					
+    				 }	
+						
+    				 console.log(heightLine+"Liniengröße und zahl: "+i);
 
 					//TEST
 
@@ -279,7 +299,9 @@ var coloredAddedKomet = [];
 	    			 regulatePanning(heightLine);
 	    			 console.log(heightLine+"Liniengröße und zahl: "+i);
 	    				  }
+	    			
 	    						 }
+	    		 
 	    	 }(i));
 	    	
 	    	// updateColor(i);
@@ -305,12 +327,15 @@ var coloredAddedKomet = [];
 		    		return function(){
 		    			$('#infoText').hide();
 		    				console.log(name[i]);
+		    				
+		    				
 		    		}
+		    		
 		    		  }(i))); 	
 	    	 
 	 //Hinzugefügten Kometen aktuelle Farbe zuweisen   		 
-	   
-		
+		    
+		    	
 	    							stage.update();
 	    				
 	}	
@@ -363,5 +388,7 @@ var coloredAddedKomet = [];
 //	 }
 //	 
 //	 stage.update();
-//	
 // }
+
+	
+	  
