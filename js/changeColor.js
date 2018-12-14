@@ -1,14 +1,18 @@
 var r = 0;
 var g = 0;
-var b = 255;
+var b = 0;
+var o = 0;
+var l = 0;
+var u = 0;
 var backgrnd;
 var pegelKomet;
 var colorKometen = [];
-var clickTemp = 0;
+//var clickTemp = 0;
 
 $( document ).ready(function(event)  {	
 	
 	changeColorBgrd();
+	changeMouseCursor();
 	
 });
 function getMousePosition() {
@@ -26,8 +30,23 @@ function getMousePosition() {
 
 function setColorBgrd (){
 	
-	$('body').css("background-color", "rgb(" + r + "," + g + "," + b +")");	
-	cmdInnerFill.style = "rgb(" + r + "," + r + "," + g +")";
+	if(b < 155){
+		$('body').css("background-color", "rgb(" + r + "," + g + "," + b +")");	
+	}
+	if(b > 155){
+		b = 100;
+		$('body').css("background-color", "rgb(" + r + "," + g + "," + b +")");	
+	}
+}
+
+function setColorInnerCircle(){
+	if(l < 155){
+		cmdInnerFill.style = "rgb(" + l + "," + o + "," + u +")";
+	}
+	if(l > 155){
+		l = 100;
+		$('body').css("background-color", "rgb(" + r + "," + g + "," + b +")");	
+	}
 }
 
 //function setColorLines (){
@@ -63,23 +82,54 @@ function updateColors(){
 }
 //vielleicht doch Pressmove?
 function changeColorBgrd(){	
-	innerCircle.on("mousedown", function (event) {
+	innerCircle.on("pressmove", function (event) {
 	//clickTemp = 1;
 	getMousePosition();
 	calculateRGB();
 	setColorBgrd ();
+	setColorInnerCircle();
 //	getColorKomet();
 //	console.log(r, g, b);
+	console.log(o, l);
 	
 	//
 	});
 }
+function changeMouseCursor(){
+	innerCircle.on("mouseover", function (event) {
+		$('html,body').css('cursor','crosshair');
+	});
+	innerCircle.on("mouseout", function (event) {
+		$('html,body').css('cursor','context-menu');
+	});
+	
+}
  function calculateRGB(){
+	 if(tempX < 38 || tempY < 38){
 	 r = 255 / 50 + 2 * tempX;
 	 g = 255 / 50 +  2 * tempY;
 	 b = 255 / tempY;
 	 
+	 	
+	 o = r;
+	 l = b;
+	 console.log(tempX, tempY);
 //	 console.log(r, g, b);
+	 }
+	 if(tempX > 38 || tempY > 38){
+		 setOrginialBgrd();
+	 }
  }
 
-
+ function setOrginialBgrd() {
+//		$('body').css("background-color", "rgb(2, 10, 40)");	
+//		cmdInnerFill.style = "rgb(3,29,126))";
+	 	r = 2;
+	 	g = 10;
+	 	b = 40;
+	 	
+	 	l = 3;
+	 	o = 29;
+	 	u = 126;
+		
+	}

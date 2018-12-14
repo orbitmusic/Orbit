@@ -309,15 +309,11 @@ var coloredAddedKomet = [];
 		    	shape[i].addEventListener('mouseover', (function(event) {
 		    		
 		    		return function(event){
-		    			
+		    			$('#infoText').text(name[i]);
 		    			// var left = Math.abs(-(shape[i].x - stage.mouseX) );
 		    		    // var top = Math.abs(shape[i].y - stage.mouseY);
-		    		     $('#infoText').
-//		    		     css({
-//		    		    	 top: top + 110 ,
-//		    		    	 left: left + 750})
-		    		    	 show();
-		    		     $('#infoText').text(name[i]);
+		    		     $('#infoText').show();
+		    		     
 		    		   //   console.log (left, top);
 		    			
 		    		}
@@ -326,7 +322,7 @@ var coloredAddedKomet = [];
 		    	shape[i].addEventListener('mouseout', (function(event) {
 		    		return function(){
 		    			$('#infoText').hide();
-		    				console.log(name[i]);
+		    				
 		    				
 		    				
 		    		}

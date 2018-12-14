@@ -7,12 +7,12 @@
 <link href="css/orbitStyle.css" rel="stylesheet" type="text/css" />
 <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<
+
 </head>
 <body onload="init()">
    <header>
    	<div class="headerWrap">
-    	<img class="logo" src="img/logo.png" alt="logo">
+    	<img class="logo" src="img/logo.png" alt="logo" onclick="location.href='orbit.html'">
     </div>
   </header>
   <div id="mainWrap" >
@@ -32,7 +32,7 @@
    			</div>
    			<div class="settingsLabel"> </div>
   		</nav>
-   		<div id="infoText">Test</div>	
+   		<div id="infoText">Test</div>
   		<canvas id="main" width="1500" height="700" ondrop="dropHandler(event)" ondragover="dragOverHandler(event)">
    		</canvas> 
    		
