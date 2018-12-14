@@ -222,10 +222,10 @@ var coloredAddedKomet = [];
 	    			rads = Math.atan2(stage.mouseY - cont[i].y, stage.mouseX - cont[i].x); 
 	    			angle = rads * (180 / Math.PI);
 	    			cont[i].rotation = angle + 90;
-	    		    console.log(cont[i].x, cont[i].y);
-	    		    console.log(line[i].regX, line[i].regY);
-	    		    console.log(cont[i].getTransformedBounds().height+"Höhe");
-	    		    console.log(cont[i].getTransformedBounds().width+"Breite");
+//	    		    console.log(cont[i].x, cont[i].y);
+//	    		    console.log(line[i].regX, line[i].regY);
+//	    		    console.log(cont[i].getTransformedBounds().height+"Höhe");
+//	    		    console.log(cont[i].getTransformedBounds().width+"Breite");
 	    					       }
 	    	  }(i)));
 
@@ -261,10 +261,32 @@ var coloredAddedKomet = [];
 	    						    y: Math.abs(cont[i].y - stage.mouseY)
 	    						   };	
 	    								
-	    				
+	    			
 	    			scaleTemp = this.offset.y / this.initial.y;
-
-
+	    			scaleTempX = this.offset.x / this.initial.x;
+	    			
+	    			//Scale Kalkulation für x-und y-Achse
+//	    			--> Scale-Maximun(y=100)
+	    			 if (scaleTemp < 1.02 ){	
+	    				 	if (this.initial.x > this.initial.y) { 
+	    		        //X-Achse
+	    				 		if (scaleTempX < 1.02){
+	    				 			cont[i].scaleY = this.offset.x / this.initial.x;
+	    				 			shape[i].scaleX = scaleTempX; //gleichzeitiges Verkleinern des Kometenkopfes?
+	    				 	
+	    				 		}	
+	    				 	} else if (this.initial.x < this.initial.y) {
+	    				 		
+	    		        //Y-Achse
+	    		    				cont[i].scaleY = this.offset.y / this.initial.y;
+	    		    				shape[i].scaleX = scaleTemp; //gleichzeitiges Verkleinern des Kometenkopfes?
+	    		    				
+	    				 		
+	    				 	} 
+	    		    		
+	    			 }
+	    			
+	    			console.log("scale" + scaleTemp);
 					//TEST Kalkulieren der einzelnen Kometen
 	    			if(name[i] == "Pegel"){
     					console.log(shape[i]);
@@ -287,14 +309,6 @@ var coloredAddedKomet = [];
     				 console.log(heightLine+"Liniengröße und zahl: "+i);
 
 					//TEST
-
-
-
-	    								
-	    		//	--> Scale-Maximun(y=100)
-	    				 if (scaleTemp < 1.02 ){	     
-	    				       cont[i].scaleY = scaleTemp;
-	    					  }
 	    			 stage.update();
 	    			 regulatePanning(heightLine);
 	    			 console.log(heightLine+"Liniengröße und zahl: "+i);
