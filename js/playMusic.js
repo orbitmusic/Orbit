@@ -27,7 +27,7 @@ stereoPanner.connect(context.destination);
 var firstInitiate=false;
 
 function initiatePlayMusic(){
-    console.log(getMusicPath + "Wird aufgespielt_1"); 
+    console.log(getMusicPath() + " initiateMusic wird gestartet"); 
     musicPlay = new Audio(getMusicPath());
 
     source = context.createMediaElementSource(musicPlay);
@@ -41,25 +41,54 @@ function initiatePlayMusic(){
     stereoPanner.connect(context.destination);
 
     
-     console.log(getMusicPath + "Wird aufgespielt_2");   
+     console.log(getMusicPath() + " initiateMusic ist abgeschlossen!");   
 }
-
+/*
 function playDroppedMusic(){
 music2 = document.getElementById("music");
 }
+*/
 
+function regulatePegel(value){
+    if(value<=200 && value>=0){
+        var pegelValue= (value -100)/100;
+        console.log("pegelValue: "+pegelValue);
+    }else{
+        console.log("Value Pegel mit: "+value+" zu hoch")
+    }
+}
+
+function regulateGain(value){
+    if(value<=200 && value>=0){
+         var gainValue= (value /40);
+         console.log("gainValue: "+gainValue);
+         gain.gain.value= gainValue;
+         console.log("gainValue: "+gain.gain.value+" of Gain");
+    }else{
+        console.log("Value Gain mit: "+value+" zu hoch")
+    }
+}
 
 function regulatePanning(value){
     if (value<=200 && value>=0){
         var panValue = (value -100)/100; //Angenommener Höchstwert 200
         console.log("panValue: "+panValue);
         stereoPanner.pan.value=panValue;
-        console.log("panValue: "+stereoPanner.pan.value+"of steroPanner");
+        console.log("panValue: "+stereoPanner.pan.value+" of steroPanner");
     } else{
         console.log("Value mit: "+value+" zu hoch")
     }
-    
-    
+}
+
+function regulateDelay(value){
+    if(value<=200 && value>=0){
+         var delayValue= (value /25);
+         console.log("delayValue: "+delayValue);
+         delay.delayTime.value=delayValue;
+         console.log("delayValue: "+delay.delayTime.value+" of Delay");
+    }else{
+        console.log("Value Delay mit: "+value+" zu hoch")
+    }
 }
 
 
@@ -71,7 +100,7 @@ playStopButton.addEventListener("click", function(){
     if(firstInitiate){
          console.log('Musik wurde bereits geladen');  
     }else {
-        initiatePlayMusic();
+        //initiatePlayMusic();
          firstInitiate=true;
     }
    

@@ -293,25 +293,37 @@ var coloredAddedKomet = [];
     					 
     				 }
     				 if(name[i] == "Gain"){
-    					 console.log(shape[i]);
-    					 
+    					console.log(shape[i]);
+    					var point = cont[i].getBounds().height;
+ 						heightLine = point * scaleTemp; 
+    					regulateGain(heightLine);
+    					console.log(heightLine+"Liniengröße und zahl: "+shape[i]);
+ 						console.log("regulateGain() wurde aufgerufen!")
     				 }
     				 if(name[i] == "Panning"){
     					var point = cont[i].getBounds().height;
  						heightLine = point * scaleTemp;
+ 						regulatePanning(heightLine);
+ 						console.log(heightLine+"Liniengröße und zahl: "+shape[i]);
+ 						console.log("regulatePanning() wurde aufgerufen!")
     					
     				 }
     				 if(name[i] == "Delay"){
-    					 console.log(shape[i]);
+    					console.log(shape[i]);
+						var point = cont[i].getBounds().height;
+ 						heightLine = point * scaleTemp;
+    					regulateDelay(heightLine);
+    					console.log(heightLine+"Liniengröße und zahl: "+shape[i]);
+ 						console.log("regulateDelay() wurde aufgerufen!")
     					
     				 }	
 						
-    				 console.log(heightLine+"Liniengröße und zahl: "+i);
+    				// console.log(heightLine+"Liniengröße und zahl: "+i);
 
 					//TEST
 	    			 stage.update();
-	    			 regulatePanning(heightLine);
-	    			 console.log(heightLine+"Liniengröße und zahl: "+i);
+	    			// regulatePanning(heightLine);
+	    			// console.log(heightLine+"Liniengröße und zahl: "+i);
 	    				  }
 	    			
 	    						 }

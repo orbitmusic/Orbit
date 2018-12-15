@@ -64,11 +64,12 @@ function addMusic(file){
 	this.fileName = file.name;
 	//console.log("Successfull added file to Audio music");	
 	console.log("Successfull added "+getMusicPath()+" file to Audio music");
-	music.play();
+	initiatePlayMusic();
+	//music.play();
 }
 
 function getMusicPath(){
-	console.log(fileName + " erfolgreich erkannt");
+	console.log(fileName + " erfolgreich erkannt, log getMusicPath");
 	return fileName;
 	
 }
