@@ -73,3 +73,8 @@ function getMusicPath(){
 	return fileName;
 	
 }
+
+function getMusicLength(){
+	
+	//Work in Progress
+}

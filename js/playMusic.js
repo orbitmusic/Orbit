@@ -4,33 +4,29 @@ var isPlaying=false;
 var context = new AudioContext();
 var musicPlay = new Audio();
 musicPlay.crossOrigin="anonymus";
-//Context-Part
+
+musicPlay.loop=false; 
 var source = context.createMediaElementSource(musicPlay);
 var gain = context.createGain();
 var stereoPanner = context.createStereoPanner();
 var delay = context.createDelay(4.0);
-/*
-source.connect(gain);
-gain.connect(delay);
-delay.connect(stereoPanner);
-stereoPanner.connect(context.destination);
-*/
 
-
-
-
-
-
-
-
-
-var firstInitiate=false;
+var compressor = context.createDynamicsCompressor();
 
 function initiatePlayMusic(){
-    console.log(getMusicPath() + " initiateMusic wird gestartet"); 
+    console.log(getMusicPath() + " initiateMusic ist gestartet"); 
     musicPlay = new Audio(getMusicPath());
 
-    source = context.createMediaElementSource(musicPlay);
+    source = context.createMediaElementSource(musicPlay);   //PART 1
+    compressor = context.createDynamicsCompressor();        //PART 2
+    filter = context.createBiquadFilter();                  //PART 3 
+
+    source.connect(compressor);
+    compressor.connect(context.destination);
+
+    source.connect(filter);
+    filter.connect(context.destination);
+
     gain = context.createGain();
     stereoPanner = context.createStereoPanner();
     delay = context.createDelay(4.0);
@@ -39,26 +35,25 @@ function initiatePlayMusic(){
     gain.connect(delay);
     delay.connect(stereoPanner);
     stereoPanner.connect(context.destination);
-
     
-     console.log(getMusicPath() + " initiateMusic ist abgeschlossen!");   
+    musicPlay.loop=true; 
+    
+    console.log(getMusicPath() + " initiateMusic ist abgeschlossen!");   
 }
-/*
-function playDroppedMusic(){
-music2 = document.getElementById("music");
-}
-*/
+//functions modifications
 
-function regulatePegel(value){
+function regulateThreshold(value){  //THRESHOLD
     if(value<=200 && value>=0){
-        var pegelValue= (value -100)/100;
-        console.log("pegelValue: "+pegelValue);
+        var thresholdValue= (value -200);
+        console.log("thresholdValue: "+thresholdValue);
+        compressor.threshold.value=thresholdValue;
+        console.log("tresholdValue: "+compressor.threshold.value+" of Threshold");
     }else{
-        console.log("Value Pegel mit: "+value+" zu hoch")
+        console.log("Value Treshold mit: "+value+" zu hoch")
     }
 }
 
-function regulateGain(value){
+function regulateGain(value){       //GAIN
     if(value<=200 && value>=0){
          var gainValue= (value /40);
          console.log("gainValue: "+gainValue);
@@ -69,7 +64,7 @@ function regulateGain(value){
     }
 }
 
-function regulatePanning(value){
+function regulatePanning(value){    //PANNING
     if (value<=200 && value>=0){
         var panValue = (value -100)/100; //Angenommener Höchstwert 200
         console.log("panValue: "+panValue);
@@ -80,7 +75,7 @@ function regulatePanning(value){
     }
 }
 
-function regulateDelay(value){
+function regulateDelay(value){      //DELAY
     if(value<=200 && value>=0){
          var delayValue= (value /25);
          console.log("delayValue: "+delayValue);
@@ -91,19 +86,95 @@ function regulateDelay(value){
     }
 }
 
+//functions modifications ADDITIONS 2
+
+
+function regulateRatio(){            //RATIO
+    if(value<=200 && value>=0){
+        var ratioValue= (value /10);
+        console.log("ratioValue: "+ratioValue);
+        compressor.ratio.value=ratioValue;
+        console.log("ratioValue: "+compressor.ratio.value+" of Ratio");
+    }else{
+        console.log("Value Ratio mit: "+value+" zu hoch")
+    }
+}
+
+function regulateKnee(){            //KNEE
+    if(value<=200 && value>=0){
+        var kneeValue= (value /5);
+        console.log("kneeValue: "+kneeValue);
+         compressor.knee.value=kneeValue;
+        console.log("kneeValue: "+compressor.knee.value+" of Knee");
+    }else{
+        console.log("Value Knee mit: "+value+" zu hoch")
+    }
+}
+
+function regulateAttack(){            //ATTACK
+    if(value<=200 && value>=0){
+        var attackValue= (value /2000);
+        console.log("attackValue: "+attackValue);
+        compressor.attack.value=attackValue;
+        console.log("attackValue: "+compressor.attack.value+" of Attack");
+    }else{
+        console.log("Value Attack mit: "+value+" zu hoch")
+    }
+}
+
+function regulateRelease(){            //RELEASE
+    if(value<=200 && value>=0){
+        var releaseValue= (value /2000);
+        console.log("releaseValue: "+releaseValue);
+        compressor.release.value=releaseValue;
+        console.log("releaseValue: "+compressor.release.value+" of Release");
+    }else{
+        console.log("Value Release mit: "+value+" zu hoch")
+    }
+}
+
+//functions modifications ADDITIONS 3
+
+function regulateFrequency(){            //RELEASE
+    if(value<=200 && value>=0){
+        var frequencyValue= (value /2000);
+        console.log("frequencyValue: "+frequencyValue);
+        filter.frequency.value=frequencyValue;
+        console.log("frequencyValue: "+filter.frequency.value+" of Frequency");
+    }else{
+        console.log("Value Frequency mit: "+value+" zu hoch")
+    }
+}
+
+function regulateDetune(){            //DETUNE
+    if(value<=200 && value>=0){
+        var detuneValue= (value /2000);
+        console.log("detuneValue: "+detuneValue);
+        filter.detune.value=detuneValue;
+        console.log("detuneValue: "+filter.detune.value+" of Detune");
+    }else{
+        console.log("Value Detune mit: "+value+" zu hoch")
+    }
+}
+
+function regulateQ(){            //Q
+    if(value<=200 && value>=0){
+        var qValue= (value /2000);
+        console.log("qValue: "+qValue);
+        filter.Q.value=qValue;
+        console.log("qValue: "+filter.Q.value+" of Q");
+    }else{
+        console.log("Value Q mit: "+value+" zu hoch")
+    }
+}
 
 
 
 
+//functions Buttons
 
 playStopButton.addEventListener("click", function(){
-    if(firstInitiate){
-         console.log('Musik wurde bereits geladen');  
-    }else {
-        //initiatePlayMusic();
-         firstInitiate=true;
-    }
-   
+      
     if(isPlaying){
         musicPlay.pause();
         playStopButton.innerHTML="Play";
@@ -111,6 +182,7 @@ playStopButton.addEventListener("click", function(){
         $('#stop').hide();
         console.log('Musik pausiert');   
     } else {
+        getMusicLength();
         musicPlay.play();
         playStopButton.innerHTML = "Stop";
         $('#play').hide();

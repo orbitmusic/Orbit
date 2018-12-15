@@ -287,9 +287,15 @@ var coloredAddedKomet = [];
 	    			 }
 	    			
 	    			console.log("scale" + scaleTemp);
+	    			
 					//TEST Kalkulieren der einzelnen Kometen
 	    			if(name[i] == "Pegel"){
     					console.log(shape[i]);
+    					var point = cont[i].getBounds().height;
+ 						heightLine = point * scaleTemp; 
+    					regulateThreshold(heightLine);
+    					console.log(heightLine+"Liniengröße und zahl: "+shape[i]);
+ 						console.log("regulateThreshold() wurde aufgerufen!")
     					 
     				 }
     				 if(name[i] == "Gain"){
