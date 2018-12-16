@@ -98,9 +98,11 @@ function changeColorBgrd(){
 function changeMouseCursor(){
 	innerCircle.on("mouseover", function (event) {
 		$('html,body').css('cursor','crosshair');
+		 $('.infos').html('<p>'+ infosFunc[0] + '</p>');
 	});
 	innerCircle.on("mouseout", function (event) {
 		$('html,body').css('cursor','context-menu');
+		 $('.infos').html('');
 	});
 	
 }

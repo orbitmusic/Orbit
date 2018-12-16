@@ -38,7 +38,7 @@ nav {
 	margin-top: 2%;
 	position: absolute;
 	width: 15%;
-	height: 50%;
+	height: 80%;
 	border-style: none none none solid;
 	border-color: #c4c6ca;
 	border-width: 1px;
@@ -59,7 +59,7 @@ nav #navSettings{
     flex-flow: row ;
    justify-content: space-between;
     width:200px;
-    height: 60px;
+    height: 200px;
     border: 2px;
 	flex-wrap: wrap;
     
@@ -148,6 +148,16 @@ nav #navSettings{
 	top: 50px;
 	left: 750px;
 }
+#infoValue{
+	font-size: 18px;
+	color: white;
+	/* display: none; */
+	position:absolute;
+	width: 50px;
+	height:20px;
+	top: 70px;
+	left: 750px;
+}
 #buttonWrap {
 	margin-left: 5%;
 	margin-top: 5%;
@@ -215,4 +225,19 @@ nav #navSettings{
 	color: white;
 	margin-top: 15%;
 	margin-bottom: 10%;
+}
+.infos {
+	margin-left: 5%;
+	top: 60%;
+	width: 200px;
+	height: 35px;
+	
+	margin-bottom: 10%;
+	padding-bottom: 25%;
+	border-color: white;
+	border-style: solid none none none;
+	border-width: 1px;
+}
+.infos p{
+	color: white;
 }

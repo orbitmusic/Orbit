@@ -31,11 +31,46 @@ function changeLabel(event) {
 }
 
 //Name aus HTML-Attribut auslesen und einfügen
- function changeId() {
+function changeId() {
 	 setting = $(event.target).attr('name');
 	
-		$('.settingsLabel').html('<p>' + setting + '</p>');	
- }
+		$('.settingsLabel').html('<p>' + setting + '</p>');
+		
+		if(setting == "Threshold"){
+			$('.infos').html('<p>'+ infos[0] + '</p>')
+		}
+		if(setting == "Gain"){
+
+			$('.infos').html('<p>'+ infos[1] + '</p>')
+		}
+		if(setting == "Panning"){
+			$('.infos').html('<p>'+ infos[2] + '</p>')
+		}
+		if(setting == "Delay"){
+			$('.infos').html('<p>'+ infos[3] + '</p>')
+		}
+		if(setting == "Ratio"){
+			$('.infos').html('<p>'+ infos[4] + '</p>')
+		}
+		if(setting == "Knee"){
+			$('.infos').html('<p>'+ infos[5] + '</p>')
+		}
+		if(setting == "Attack"){
+			$('.infos').html('<p>'+ infos[6] + '</p>')
+		}
+		if(setting == "Release"){
+			$('.infos').html('<p>'+ infos[7] + '</p>')
+		}
+		if(setting == "Frequency"){
+			$('.infos').html('<p>'+ infos[8] + '</p>')
+		}
+		if(setting == "Detune"){
+			$('.infos').html('<p>'+ infos[9] + '</p>')
+		}
+		if(setting == "Q"){
+			$('.infos').html('<p>'+ infos[10] + '</p>')
+		}
+}
  
 //
  function addNumbers() {
@@ -176,10 +211,8 @@ var coloredAddedKomet = [];
 	    	stage.addChild(cont[i]);	
 	    	stage.update();
 	    				
-	    	//Events in Closures
 	    	
-	    	 
-	    
+	    	//Events in Closures
 	    	//Komet um den Mittelpunkt rotieren
 	    	shape[i].addEventListener('pressmove', (function(temp) {
 	    						 
@@ -364,7 +397,7 @@ var coloredAddedKomet = [];
 		    			// var left = Math.abs(-(shape[i].x - stage.mouseX) );
 		    		    // var top = Math.abs(shape[i].y - stage.mouseY);
 		    		     $('#infoText').show();
-		    		     
+		    		     $('.infos').html('<p>'+ infosFunc[1] + '</p>');
 		    		   //   console.log (left, top);
 		    			
 		    		}
@@ -373,7 +406,7 @@ var coloredAddedKomet = [];
 		    	shape[i].addEventListener('mouseout', (function(event) {
 		    		return function(){
 		    			$('#infoText').hide();
-		    				
+		    			 $('.infos').html('');	
 		    				
 		    				
 		    		}
