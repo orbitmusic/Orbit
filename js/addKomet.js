@@ -256,49 +256,99 @@ var coloredAddedKomet = [];
 	    			console.log("scale" + scaleTemp);
 	    			
 					//TEST Kalkulieren der einzelnen Kometen
-	    			
+	    			//Ersetzung durch if+if else?
 	    			
 	    			if(name[i] == "Threshold"){
-    					console.log(shape[i]);
+    					
     					var point = cont[i].getBounds().height;
  						heightLine = point * scaleTemp; 
     					regulateThreshold(heightLine);
-    					console.log(heightLine+"Liniengröße und zahl: "+shape[i]);
- 						console.log("regulateThreshold() wurde aufgerufen!")
-    					 
+    					console.log(heightLine+"Liniengröße und zahl: "+name[i]);
+ 						    					 
     				 }
     				 if(name[i] == "Gain"){
-    					console.log(shape[i]);
+    					
     					var point = cont[i].getBounds().height;
  						heightLine = point * scaleTemp; 
     					regulateGain(heightLine);
-    					console.log(heightLine+"Liniengröße und zahl: "+shape[i]);
- 						console.log("regulateGain() wurde aufgerufen!")
+    					console.log(heightLine+"Liniengröße und zahl: "+name[i]);
+ 						
     				 }
     				 if(name[i] == "Panning"){
+
     					var point = cont[i].getBounds().height;
  						heightLine = point * scaleTemp;
  						regulatePanning(heightLine);
- 						console.log(heightLine+"Liniengröße und zahl: "+shape[i]);
- 						console.log("regulatePanning() wurde aufgerufen!")
-    					
+ 						console.log(heightLine+"Liniengröße und zahl: "+name[i]);
+ 						    					
     				 }
     				 if(name[i] == "Delay"){
-    					console.log(shape[i]);
+    					
 						var point = cont[i].getBounds().height;
  						heightLine = point * scaleTemp;
     					regulateDelay(heightLine);
-    					console.log(heightLine+"Liniengröße und zahl: "+shape[i]);
- 						console.log("regulateDelay() wurde aufgerufen!")
-    					
-    				 }	
-						
-    				// console.log(heightLine+"Liniengröße und zahl: "+i);
+    					console.log(heightLine+"Liniengröße und zahl: "+name[i]);
+ 						   					
+    				 }
+    				 if(name[i] == "Ratio"){
 
-					//TEST
+						var point = cont[i].getBounds().height;
+ 						heightLine = point * scaleTemp;
+						regulateRatio(heightLine);
+    				 	console.log(heightLine+"Liniengröße und zahl: "+name[i]);
+
+    				 }
+    				 if(name[i] == "Knee"){
+
+    				 	var point = cont[i].getBounds().height;
+ 						heightLine = point * scaleTemp;
+						regulateKnee(heightLine);
+    				 	console.log(heightLine+"Liniengröße und zahl: "+name[i]);
+
+    				 }
+    				 if(name[i] == "Attack"){
+
+    				 	var point = cont[i].getBounds().height;
+ 						heightLine = point * scaleTemp;
+						regulateAttack(heightLine);
+    				 	console.log(heightLine+"Liniengröße und zahl: "+name[i]);
+
+    				 }
+    				 if(name[i] == "Release"){
+
+    				 	var point = cont[i].getBounds().height;
+ 						heightLine = point * scaleTemp;
+						regulateRelease(heightLine);
+    				 	console.log(heightLine+"Liniengröße und zahl: "+name[i]);
+
+    				 }
+    				 if(name[i] == "Frequency"){
+
+    				 	var point = cont[i].getBounds().height;
+ 						heightLine = point * scaleTemp;
+						regulateFrequency(heightLine);
+    				 	console.log(heightLine+"Liniengröße und zahl: "+name[i]);
+
+    				 }
+    				 if(name[i] == "Detune"){
+
+    				 	var point = cont[i].getBounds().height;
+ 						heightLine = point * scaleTemp;
+						regulateDetune(heightLine);
+    				 	console.log(heightLine+"Liniengröße und zahl: "+name[i]);
+
+    				 }
+    				 if(name[i] == "Q"){
+
+    				 	var point = cont[i].getBounds().height;
+ 						heightLine = point * scaleTemp;
+ 						regulateQ(heightLine);
+    				 	console.log(heightLine+"Liniengröße und zahl: "+name[i]);
+    				 	
+    				 }	
+
 	    			 stage.update();
-	    			// regulatePanning(heightLine);
-	    			// console.log(heightLine+"Liniengröße und zahl: "+i);
+	    			
 	    				  }
 	    			
 	    						 }

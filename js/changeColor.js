@@ -113,8 +113,8 @@ function changeMouseCursor(){
 	 	
 	 o = r;
 	 l = b;
-	 console.log(tempX, tempY);
-//	 console.log(r, g, b);
+	 console.log("Von changeColor-> X: "+tempX+" Y: "+ tempY);
+	 console.log(getR()+", "+getG()+", "+ getB());
 	 }
 	 if(tempX > 38 || tempY > 38){
 		 setOrginialBgrd();
@@ -133,3 +133,22 @@ function changeMouseCursor(){
 	 	u = 126;
 		
 	}
+
+function getR(){
+	return r;
+}
+function getG(){
+	return g;
+}
+function getB(){
+	return b;
+}
+function getO(){
+	return o;
+}
+function getL(){
+	return l;
+}
+function getU(){
+	return u;
+}
