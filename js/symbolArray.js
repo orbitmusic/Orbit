@@ -64,4 +64,27 @@ let Komet = new Array();
     Komet[7]["Farbe"] = "#204475";
     Komet[7]["Symbol"] = "drawRect(-15, -15, 30, 30)";
 
+    Komet[8] = new Object();
+    Komet[8]["Name"] = "Frequency";
+    Komet[8]["Line"] = "frequencyLine";
+    Komet[8]["Container"] = "frequencyContainer";	
+    Komet[8]["Rotation"] = "160";
+    Komet[8]["Farbe"] = "#0e9290";
+    Komet[8]["Symbol"] = "drawRect(-15, -15, 30, 30)";
+    
+    Komet[9] = new Object();
+    Komet[9]["Name"] = "Detune";
+    Komet[9]["Line"] = "detuneLine";
+    Komet[9]["Container"] = "detuneContainer";	
+    Komet[9]["Rotation"] = "180";
+    Komet[9]["Farbe"] = "#68517c";
+    Komet[9]["Symbol"] = "drawRect(-15, -15, 30, 30)";
+    
+    Komet[10] = new Object();
+    Komet[10]["Name"] = "Q";
+    Komet[10]["Line"] = "qLine";
+    Komet[10]["Container"] = "qContainer";	
+    Komet[10]["Rotation"] = "200";
+    Komet[10]["Farbe"] = "#394d4a";
+    Komet[10]["Symbol"] = "drawRect(-15, -15, 30, 30)";
    

@@ -109,7 +109,25 @@ nav #navSettings{
 	border-radius: 50%;
 	background-color: #204475;
 }
+#frequency{
+	border-radius: 50%;
+	background-color: #0e9290;
+	
+}
+#detune{
+	border-radius: 50%;
+	background-color: #68517c;
+}
 
+#q {
+	border-radius: 50%;
+	background-color: #394d4a;
+}
+
+#platzhalter {
+	border-radius: 50%;
+	background-color: transparent;
+}
 .settingsLabel{
 	top: 20%;
 	margin-left: 40%;

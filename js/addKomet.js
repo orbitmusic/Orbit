@@ -4,8 +4,8 @@ nameOfElement = "";
 var spacePressed = false;
 var cmdKomet = [];
 var body = document.getElementsByTagName("body");
-var idArray = ['#threshold', '#gain', '#panning', '#delay', '#ratio', '#knee', '#attack', '#release'];
-var nameArray = ['Threshold', 'Gain', 'Panning', 'Delay', 'Ratio', 'Knee', 'Attack', 'Release'];
+var idArray = ['#threshold', '#gain', '#panning', '#delay', '#ratio', '#knee', '#attack', '#release', '#frequency', '#detune', '#q'];
+var nameArray = ['Threshold', 'Gain', 'Panning', 'Delay', 'Ratio', 'Knee', 'Attack', 'Release', 'Frequency', 'Detune', 'Q'];
 $( document ).ready(function(event)  {
 
 	changeLabel();
