@@ -52,19 +52,7 @@ function initiatePlayMusic(){
     
     musicPlay.loop=true; 
     
-    //Doofe Idee, Beeinflussung ohne Anfassen der Zeiger x.x
-    //Einstellen von neutralem Wert? -> Wert bei Zeiger hinzufügen nicht zutreffend
-    regulateThreshold(250);
-    regulateGain(250);
-    regulatePanning(250);
-    regulateDelay(250);
-    regulateRatio(250);
-    regulateKnee(250);
-    regulateAttack(250);
-    regulateRelease(250);
-    regulateFrequency(250);
-    regulateDetune(250);
-    regulateQ(250);
+    
 
     console.log(getMusicPath() + " initiateMusic ist abgeschlossen!");   
 }
