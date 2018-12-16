@@ -114,11 +114,26 @@ function changeMouseCursor(){
 	 o = r;
 	 l = b;
 	 console.log("Von changeColor-> X: "+tempX+" Y: "+ tempY);
-	 console.log(getR()+", "+getG()+", "+ getB());
+	 console.log("R: "+getR()+", G: "+getG()+", B: "+ getB());
 	 }
 	 if(tempX > 38 || tempY > 38){
 		 setOrginialBgrd();
+		 optionsSettingStandart();
 	 }
+	//Choose Mood
+	if(tempX < 9 || tempY < 9){
+		optionsSetting1();
+	}else if((tempX < 19 || tempY < 19) && (tempX > 9 || tempY > 9)){
+		optionsSetting2();
+	}else if((tempX < 28 || tempY < 28) && (tempX > 19 || tempY > 19)){
+		optionsSetting3();
+	}else if((tempX < 38 || tempY < 38) && (tempX > 28 || tempY > 28)){
+		optionsSetting4();
+	}
+
+
+
+
  }
 
  function setOrginialBgrd() {
@@ -134,6 +149,8 @@ function changeMouseCursor(){
 		
 	}
 
+//Nicht länger benötigt
+/*
 function getR(){
 	return r;
 }
@@ -152,3 +169,4 @@ function getL(){
 function getU(){
 	return u;
 }
+*/

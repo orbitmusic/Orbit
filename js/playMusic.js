@@ -13,6 +13,17 @@ var delay = context.createDelay(4.0);
 
 var compressor = context.createDynamicsCompressor();
 
+var safeValue1 =0;
+var safeValue2 =0;
+var safeValue3 =0;
+var safeStandart1 =0;
+var safeStandart2 =0;
+var safeStandart3 =0;
+var option1=false;
+var option2=false;
+var option3=false;
+var option4=false;
+
 //Start-Werte
 
 
@@ -41,6 +52,20 @@ function initiatePlayMusic(){
     
     musicPlay.loop=true; 
     
+    //Doofe Idee, Beeinflussung ohne Anfassen der Zeiger x.x
+    //Einstellen von neutralem Wert? -> Wert bei Zeiger hinzufügen nicht zutreffend
+    regulateThreshold(250);
+    regulateGain(250);
+    regulatePanning(250);
+    regulateDelay(250);
+    regulateRatio(250);
+    regulateKnee(250);
+    regulateAttack(250);
+    regulateRelease(250);
+    regulateFrequency(250);
+    regulateDetune(250);
+    regulateQ(250);
+
     console.log(getMusicPath() + " initiateMusic ist abgeschlossen!");   
 }
 //functions modifications
@@ -88,7 +113,7 @@ function regulateDelay(value){      //DELAY
 //functions modifications ADDITIONS 2
 
 
-function regulateRatio(){            //RATIO
+function regulateRatio(value){            //RATIO
     if(value<=250 && value>=50){
         var ratioValue= ((value-50) /10);   //Von 0 bis +20dB 
         compressor.ratio.value=ratioValue;
@@ -98,7 +123,7 @@ function regulateRatio(){            //RATIO
     }
 }
 
-function regulateKnee(){            //KNEE
+function regulateKnee(value){            //KNEE
     if(value<=250 && value>=50){
         var kneeValue= ((value-50) /5); //Von 0 bis 40 Grad
         compressor.knee.value=kneeValue;
@@ -108,7 +133,7 @@ function regulateKnee(){            //KNEE
     }
 }
 
-function regulateAttack(){            //ATTACK
+function regulateAttack(value){            //ATTACK
     if(value<=250 && value>=50){
         var attackValue= (((value-50)*5) /1000);    //In 0.5er Schritten von 0 bis 1dB
         compressor.attack.value=attackValue;
@@ -118,7 +143,7 @@ function regulateAttack(){            //ATTACK
     }
 }
 
-function regulateRelease(){            //RELEASE
+function regulateRelease(value){            //RELEASE
     if(value<=250 && value>=50){
         var releaseValue= (((value-50)*5) /1000);    //In 0.5er Schritten von 0 bis 1dB
         compressor.release.value=releaseValue;
@@ -130,7 +155,7 @@ function regulateRelease(){            //RELEASE
 
 //functions modifications ADDITIONS 3
 
-function regulateFrequency(){            //FREQUENCY
+function regulateFrequency(value){            //FREQUENCY
     if(value<=250 && value>=50){
         var frequencyValue= (((value-50)*100 ));    //Werte von 0 bis 20k in 100er Schritten
         filter.frequency.value=frequencyValue;
@@ -140,7 +165,7 @@ function regulateFrequency(){            //FREQUENCY
     }
 }
 
-function regulateDetune(){            //DETUNE
+function regulateDetune(value){            //DETUNE
     if(value<=250 && value>=50){
         var detuneValue= ((value-50) /2);       //Werte von 0 bis 100 in 1er Schritten 
         filter.detune.value=detuneValue;
@@ -150,7 +175,7 @@ function regulateDetune(){            //DETUNE
     }
 }
 
-function regulateQ(){            //Q
+function regulateQ(value){            //Q
     if(value<=250 && value>=50){
         var qValue= ((value-50) /2);        //Werte von 0 bis 100 in 1er Schritten 
         filter.Q.value=qValue;
@@ -226,16 +251,155 @@ musicPlay.addEventListener("ended", function (e){
 });
 
 //Colour Moods
-//Erforderlich die Zeiger hinzuzufügen?
+//Bei bereits vorhanden Zeigern, werden die dazugehörigen Längen nicht geändert, aber der zugeordnete Wert schon
 function optionsSetting1(){
-
+    
+    if(!option1){
+        if(option2){
+            gain.gain.value=safeValue1;
+            stereoPanner.pan.value=safeValue2;
+            filter.frequency.value=safeValue3;
+            option2=false;
+        }else if(option3){
+            compressor.ratio.value=safeValue1;
+            stereoPanner.pan.value=safeValue2;
+            compressor.release.value=safeValue3;
+            option3=false;
+        }else if(option4){
+            compressor.knee.value=safeValue1;
+            filter.detune.value=safeValue2;
+            filter.Q.value=safeValue3;
+            option4=false;
+        }
+       
+        safeValue1=gain.gain.value;
+        safeValue2=stereoPanner.pan.value;
+        safeValue3=filter.frequency.value;
+        
+        regulateGain(250);
+        regulatePanning(250);
+        regulateFrequency(250);
+        
+        console.log("Colour set on Option 1!")
+        option1=true;
+    }
+    
 }
 function optionsSetting2(){
-    
+    if(option1){
+        gain.gain.value=safeValue1;
+        stereoPanner.pan.value=safeValue2;
+        filter.frequency.value=safeValue3;
+        option1=false;
+    }else if(option3){
+        compressor.ratio.value=safeValue1;
+        stereoPanner.pan.value=safeValue2;
+        compressor.release.value=safeValue3;
+        option3=false;
+    }else if(option4){
+        compressor.knee.value=safeValue1;
+        filter.detune.value=safeValue2;
+        filter.Q.value=safeValue3;
+        option4=false;
+    }
+
+    if(!option2){
+        safeValue1=gain.gain.value;
+        safeValue2=stereoPanner.pan.value;
+        safeValue3=filter.frequency.value;
+        
+        regulateGain(250);
+        regulatePanning(150);
+        regulateFrequency(51);
+
+        console.log("Colour set on Option 2!")
+        option2=true;
+    }
 }
 function optionsSetting3(){
-    
+    if(option1){
+        gain.gain.value=safeValue1;
+        stereoPanner.pan.value=safeValue2;
+        filter.frequency.value=safeValue3;
+        option1=false;
+    }else if(option2){
+        gain.gain.value=safeValue1;
+        stereoPanner.pan.value=safeValue2;
+        filter.frequency.value=safeValue3;
+        option2=false;
+    }else if(option4){
+        compressor.knee.value=safeValue1;
+        filter.detune.value=safeValue2;
+        filter.Q.value=safeValue3;
+        option4=false;
+    }
+
+    if(!option3){
+        safeValue1=compressor.ratio.value;
+        safeValue2=stereoPanner.pan.value;
+        safeValue3=compressor.release.value;
+        
+        regulateRatio(50);
+        regulatePanning(150);
+        regulateRelease(250);
+
+        console.log("Colour set on Option 3!")
+        option3=true;
+    }
 }
 function optionsSetting4(){
-    
+    if(option1){
+        gain.gain.value=safeValue1;
+        stereoPanner.pan.value=safeValue2;
+        filter.frequency.value=safeValue3;
+        option1=false;
+    }else if(option2){
+        gain.gain.value=safeValue1;
+        stereoPanner.pan.value=safeValue2;
+        filter.frequency.value=safeValue3;
+        option2=false;
+    }else if(option3){
+        compressor.ratio.value=safeValue1;
+        stereoPanner.pan.value=safeValue2;
+        compressor.release.value=safeValue3;
+        option3=false;
+    }
+
+    if(!option4){
+        safeValue1=compressor.knee.value;
+        safeValue2=filter.detune.value;
+        safeValue3=filter.Q.value;
+        
+        regulateKnee(50);
+        regulateDetune(250);
+        regulateQ(150);
+
+        console.log("Colour set on Option 4!")
+        option4=true;
+    }
+}
+function optionsSettingStandart(){
+    if(option1){
+        gain.gain.value=safeValue1;
+        stereoPanner.pan.value=safeValue2;
+        filter.frequency.value=safeValue3;
+        option1=false;
+    }else if(option2){
+        gain.gain.value=safeValue1;
+        stereoPanner.pan.value=safeValue2;
+        filter.frequency.value=safeValue3;
+        option2=false;
+    }else if(option3){
+        compressor.ratio.value=safeValue1;
+        stereoPanner.pan.value=safeValue2;
+        compressor.release.value=safeValue3;
+        option3=false;
+    }else if(option4){
+        compressor.knee.value=safeValue1;
+        filter.detune.value=safeValue2;
+        filter.Q.value=safeValue3;
+        option4=false;
+    }else{
+        console.log("Colour set on Standart!")
+    }
 }
