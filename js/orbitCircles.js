@@ -51,9 +51,10 @@ function init() {
     
     stage.addChild(circleGroup);
 
-	createjs.Ticker.setFPS(60);
+	createjs.Ticker.setFPS(25);
 	createjs.Ticker.addEventListener("tick", function(){
 		stage.update();
+		tick();
 	});
 	stage.update();
 }

@@ -15,6 +15,7 @@ function dropHandler(ev){
                
 
 				addMusic(file);
+				setSongtitel(fileName);
 				console.log("Successfull run addMusic()");
             }
         }
@@ -49,13 +50,13 @@ function removeDragData(ev) {
 }
 
 function musicDroppedTrue(){  //Visuelle Bestätigung für Datei-Drop -> Grüner Ring
-    
-	var greenCircle = new createjs.Shape();
-    greenCircle.graphics.beginStroke("#40FF00").drawCircle(0, 0, 300);
-    greenCircle.x=750;					
-    greenCircle.y=350;					
-    circleGroup.addChild(greenCircle);
-    stage.update();
+	progressSim();
+//	var greenCircle = new createjs.Shape();
+//    greenCircle.graphics.beginStroke("#40FF00").drawCircle(0, 0, 300);
+//    greenCircle.x=750;					
+//    greenCircle.y=350;					
+//    circleGroup.addChild(greenCircle);
+//    stage.update();
 }
 
 function addMusic(file){
@@ -72,6 +73,9 @@ function getMusicPath(){
 	console.log(fileName + " erfolgreich erkannt, log getMusicPath");
 	return fileName;
 	
+}
+function setSongtitel(fileName){
+	$('#songTitel').text(fileName);
 }
 
 function getMusicLength(){

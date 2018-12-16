@@ -71,7 +71,7 @@ nav #navSettings{
 	
 }
 
-#pegel{
+#threshold{
 	border-radius: 50%;
 	background-color: #7087de;
 }
@@ -114,8 +114,8 @@ nav #navSettings{
 	width: 200px;
 	height: 35px;
 	margin-top: 2%;
-	margin-bottom: 5%;
-	padding-bottom: 10%;
+	margin-bottom: 10%;
+	padding-bottom: 30%;
 	border-color: white;
 	border-style: none none solid none;
 	border-width: 1px;
@@ -162,3 +162,18 @@ nav #navSettings{
 	margin-left: 5% !important;
 	margin-top: 5%;
 	}
+	
+#songWrap {
+
+	margin-top: 10%;
+	width: 200px;
+	height: 35px;
+	
+	margin-bottom: 10%;
+}
+
+#songTitel {
+	color: white;
+	margin-top: 15%;
+	margin-bottom: 10%;
+}

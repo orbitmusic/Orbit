@@ -13,7 +13,7 @@ $( document ).ready(function(event)  {
 
 //Eigenschaften der Kometen bei Mouseover anzeigen
 function changeLabel(event) {	 
-	$('#pegel').mouseover(function() {			
+	$('#threshold').mouseover(function() {			
 		changeId();		
 	});
 
@@ -26,7 +26,7 @@ function changeLabel(event) {
 	$('#delay').mouseover(function() {		
 		changeId();});
 	
-	$('#pegel').mouseout(function() {
+	$('#threshold').mouseout(function() {
 		$('p').remove();});
 	
 	$('#gain').mouseout(function() {
@@ -49,7 +49,7 @@ function changeLabel(event) {
 //
  function addNumbers() {
 	 
-	 $('#pegel').one('click', function(event) {
+	 $('#threshold').one('click', function(event) {
 		 addNumberTo();
 		
 		
@@ -76,7 +76,7 @@ function addNumberTo () {
 	 
 	 function setNumber(){
 		 
-		 if(nameOfElement == "Pegel"){
+		 if(nameOfElement == "Threshold"){
 			 number = 0;
 			
 		 }
@@ -267,10 +267,11 @@ var coloredAddedKomet = [];
 	    			
 	    			//Scale Kalkulation für x-und y-Achse
 //	    			--> Scale-Maximun(y=100)
-	    			 if (scaleTemp < 1.02 ){	
+	    			 if (scaleTemp < 1.02 && scaleTemp > 0.21  ){	
 	    				 	if (this.initial.x > this.initial.y) { 
 	    		        //X-Achse
-	    				 		if (scaleTempX < 1.02){
+	    				 		if (scaleTempX < 1.02 && scaleTempX > 0.21){
+	    				 			console.log("Scale " + scaleTempX);
 	    				 			cont[i].scaleY = this.offset.x / this.initial.x;
 	    				 			shape[i].scaleX = scaleTempX; //gleichzeitiges Verkleinern des Kometenkopfes?
 	    				 	
@@ -289,7 +290,7 @@ var coloredAddedKomet = [];
 	    			console.log("scale" + scaleTemp);
 	    			
 					//TEST Kalkulieren der einzelnen Kometen
-	    			if(name[i] == "Pegel"){
+	    			if(name[i] == "Threshold"){
     					console.log(shape[i]);
     					var point = cont[i].getBounds().height;
  						heightLine = point * scaleTemp; 

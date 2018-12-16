@@ -1,9 +1,9 @@
 let Komet = new Array();
 
     Komet[0] = new Object();
-    Komet[0]["Name"] = "Pegel";
-    Komet[0]["Line"] = "pegelLine";
-    Komet[0]["Container"] = "pegelContainer";	
+    Komet[0]["Name"] = "Threshold";
+    Komet[0]["Line"] = "thresholdLine";
+    Komet[0]["Container"] = "thresholdContainer";	
     Komet[0]["Rotation"] = "0";
     Komet[0]["Farbe"] = "#7087de";
     Komet[0]["Symbol"] = "drawCircle(0, 0, 15)";
