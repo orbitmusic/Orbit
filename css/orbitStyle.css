@@ -24,7 +24,7 @@ body {
 .logo {
 	
 	position: absolute;
-	width: 10%;
+	width: 13%;
 }
 #mainWrap {
 	display: flex;
@@ -38,7 +38,7 @@ nav {
 	margin-top: 2%;
 	position: absolute;
 	width: 15%;
-	height: 30%;
+	height: 50%;
 	border-style: none none none solid;
 	border-color: #c4c6ca;
 	border-width: 1px;
@@ -61,14 +61,14 @@ nav #navSettings{
     width:200px;
     height: 60px;
     border: 2px;
-
+	flex-wrap: wrap;
     
 }
 .settings {
 	margin-left: 5%;
 	width: 35px;
 	height: 35px;
-	
+	margin-top: 5%;
 }
 
 #threshold{
@@ -90,12 +90,34 @@ nav #navSettings{
 	border-radius: 50%;
 	background-color: #333399;
 }
+#ratio{
+	border-radius: 50%;
+	background-color: #262428;
+}
+
+#knee{
+	border-radius: 50%;
+	background-color: #0099ff;
+	
+}
+#attack{
+	border-radius: 50%;
+	background-color: #633ca4;
+}
+
+#release {
+	border-radius: 50%;
+	background-color: #204475;
+}
+
 .settingsLabel{
-	top: 1%;
-	margin-left: 30%;
+	top: 20%;
+	margin-left: 40%;
+	
 	width: 200px;
 	height: 35px;
 	color: white;
+	
 }
 #infoText{
 	font-size: 20px;
@@ -115,7 +137,7 @@ nav #navSettings{
 	height: 35px;
 	margin-top: 2%;
 	margin-bottom: 10%;
-	padding-bottom: 30%;
+	padding-bottom: 25%;
 	border-color: white;
 	border-style: none none solid none;
 	border-width: 1px;
@@ -125,7 +147,6 @@ nav #navSettings{
 	display: flex;
 	flex-flow: row ;
 	margin-bottom: 10%;
-	
 	position: absolute;
     background-color: transparent; 
     border-color: white;

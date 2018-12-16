@@ -31,5 +31,37 @@ let Komet = new Array();
     Komet[3]["Rotation"] = "60";
     Komet[3]["Farbe"] = "#333399";
     Komet[3]["Symbol"] = "drawRect(-15, -15, 30, 30)";
+    
+    Komet[4] = new Object();
+    Komet[4]["Name"] = "Ratio";
+    Komet[4]["Line"] = "ratioLine";
+    Komet[4]["Container"] = "ratioContainer";	
+    Komet[4]["Rotation"] = "80";
+    Komet[4]["Farbe"] = "#262428";
+    Komet[4]["Symbol"] = "drawRect(-15, -15, 30, 30)";
+    
+    Komet[5] = new Object();
+    Komet[5]["Name"] = "Knee";
+    Komet[5]["Line"] = "kneeLine";
+    Komet[5]["Container"] = "kneeContainer";	
+    Komet[5]["Rotation"] = "100";
+    Komet[5]["Farbe"] = "#0099ff";
+    Komet[5]["Symbol"] = "drawRect(-15, -15, 30, 30)";
+    
+    Komet[6] = new Object();
+    Komet[6]["Name"] = "Attack";
+    Komet[6]["Line"] = "attackLine";
+    Komet[6]["Container"] = "attackContainer";	
+    Komet[6]["Rotation"] = "120";
+    Komet[6]["Farbe"] = "#633ca4";
+    Komet[6]["Symbol"] = "drawRect(-15, -15, 30, 30)";
+    
+    Komet[7] = new Object();
+    Komet[7]["Name"] = "Release";
+    Komet[7]["Line"] = "releaseLine";
+    Komet[7]["Container"] = "releaseContainer";	
+    Komet[7]["Rotation"] = "140";
+    Komet[7]["Farbe"] = "#204475";
+    Komet[7]["Symbol"] = "drawRect(-15, -15, 30, 30)";
 
    

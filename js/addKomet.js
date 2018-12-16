@@ -1,9 +1,11 @@
 temp = 0;
-var number;
+var number = null;
 nameOfElement = "";
 var spacePressed = false;
 var cmdKomet = [];
 var body = document.getElementsByTagName("body");
+var idArray = ['#threshold', '#gain', '#panning', '#delay', '#ratio', '#knee', '#attack', '#release'];
+var nameArray = ['Threshold', 'Gain', 'Panning', 'Delay', 'Ratio', 'Knee', 'Attack', 'Release'];
 $( document ).ready(function(event)  {
 
 	changeLabel();
@@ -13,30 +15,19 @@ $( document ).ready(function(event)  {
 
 //Eigenschaften der Kometen bei Mouseover anzeigen
 function changeLabel(event) {	 
-	$('#threshold').mouseover(function() {			
-		changeId();		
-	});
-
-	$('#gain').mouseover(function() {		
-		changeId();});
 	
-	$('#panning').mouseover(function() {		
-		changeId();	});
+	for(var i = 0; i < idArray.length; i++){
+		
+		$(idArray[i]).mouseover(function() {			
+			changeId();		
+		});
+	}
 	
-	$('#delay').mouseover(function() {		
-		changeId();});
-	
-	$('#threshold').mouseout(function() {
-		$('p').remove();});
-	
-	$('#gain').mouseout(function() {
-		$('p').remove();});	
-	
-	$('#panning').mouseout(function() {
-		$('p').remove();});	
-	
-	$('#delay').mouseout(function() {
-		$('p').remove();});	
+	for(var i = 0; i < idArray.length; i++){
+		
+		$(idArray[i]).mouseout(function() {
+			$('p').remove();});
+	}
 }
 
 //Name aus HTML-Attribut auslesen und einfügen
@@ -48,24 +39,12 @@ function changeLabel(event) {
  
 //
  function addNumbers() {
-	 
-	 $('#threshold').one('click', function(event) {
-		 addNumberTo();
-		
-		
- });
-	 $('#gain').one('click', function(event) {
-		 addNumberTo();
-		 
- });
-	 $('#panning').one('click', function(event) {
-		 addNumberTo();
-		
- });
-	 $('#delay').one('click', function(event) {
-		 addNumberTo();
-		 
- }); 
+	
+ for(var i = 0; i < idArray.length; i++){ 
+		 $(idArray[i]).one('click', function(event) {
+			 addNumberTo();			
+		 });
+ }
 	
  }  
 //Kometen Erkennungsnummern zuweisen
@@ -75,31 +54,18 @@ function addNumberTo () {
 	 addKomet(event);
 	 
 	 function setNumber(){
-		 
-		 if(nameOfElement == "Threshold"){
-			 number = 0;
-			
-		 }
-		 else if(nameOfElement == "Gain"){
-			 number = 1;
+	
+		 for(var i = 0; i < nameArray.length; i++){ 
 			 
-		 }
-		 else if(nameOfElement == "Panning"){
-			 number = 2;
-			
-		 }
-		 else if(nameOfElement == "Delay"){
-			 number = 3;
-			 
-		 }
-		 else{
-			 number = null;
-		 }
-		
-	 
-  }
+			 if(nameOfElement == nameArray[i]){
+				 number = i;
+				
+			 	}
+	 }
 
+	 }
 }
+
 //Eigenschaften der Kometen aus Array auslesen und anhand der number filtern
 function addKometSettings(){
 			 if(number != null){
@@ -290,6 +256,8 @@ var coloredAddedKomet = [];
 	    			console.log("scale" + scaleTemp);
 	    			
 					//TEST Kalkulieren der einzelnen Kometen
+	    			
+	    			
 	    			if(name[i] == "Threshold"){
     					console.log(shape[i]);
     					var point = cont[i].getBounds().height;
