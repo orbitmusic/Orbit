@@ -152,7 +152,7 @@ function changeMouseCursor(){
 	}
 
 //Nicht länger benötigt
-/*
+
 function getR(){
 	return r;
 }
@@ -171,4 +171,3 @@ function getL(){
 function getU(){
 	return u;
 }
-*/
