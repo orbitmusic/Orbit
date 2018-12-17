@@ -7,7 +7,6 @@ var u = 0;
 var backgrnd;
 var pegelKomet;
 var colorKometen = [];
-//var clickTemp = 0;
 
 $( document ).ready(function(event)  {	
 	
@@ -16,17 +15,16 @@ $( document ).ready(function(event)  {
 	
 });
 function getMousePosition() {
-	
+
+	this.initial = {
+		x: Math.abs(-(innerCircle.x - stage.mouseX)),
+		y: Math.abs(innerCircle.y - stage.mouseY)
+	};
 		
-		this.initial = {
-		         x: Math.abs(-(innerCircle.x - stage.mouseX)),
-		         y: Math.abs(innerCircle.y - stage.mouseY)
-		       };
+	tempX = this.initial.x;
+	tempY = this.initial.y;
 		
-		tempX = this.initial.x;
-		tempY = this.initial.y;
-		
-	}
+}
 
 function setColorBgrd (){
 	
@@ -40,6 +38,7 @@ function setColorBgrd (){
 }
 
 function setColorInnerCircle(){
+
 	if(l < 155){
 		cmdInnerFill.style = "rgb(" + l + "," + o + "," + u +")";
 	}
@@ -49,53 +48,42 @@ function setColorInnerCircle(){
 	}
 }
 
-//function setColorLines (){
-//$('h3').css("color", "rgb(" + b + "," + g + "," + r +")" );
-//$('nav').css("border-color", "rgb(" + b + "," + g + "," + r +")" );
-//$('.settingsLabel').css("color", "rgb(" + b + "," + g + "," + r +")" );
-//cmdCenter.style = "rgb(" + b + "," + g + "," + r +")";
-//cmdInner.style = "rgb(" + b + "," + g + "," + r +")";
-//cmdInnerFill.style = "rgb(" + b + "," + g + "," + r +")";
-//cmdDashed.style = "rgb(" + b + "," + g + "," + r +")";
-//cmdCircle.style = "rgb(" + b + "," + g + "," + r +")";
-//}
 //Veränderung der Farbe der Kometen --> wird momentan nicht aufgerufen
 function getColorKomet (){
-r +=50;
+	r +=50;
 
-		$('#pegel').css("background-color" , "rgb(" + g + "," + g + "," + r +")" );
-			pegelKomet = $('#pegel').css("background-color");
-		$('#gain').css("background-color", "rgb(" + b + "," + r + "," + g +")" );
-			gainKomet = $('#gain').css("background-color");
-		$('#panning').css("background-color", "rgb(" + g + "," + b + "," + b +")" );
-			panningKomet = $('#panning').css("background-color");
-		$('#delay').css("background-color", "rgb(" + r + "," + r + "," + b +")" );
-			delayKomet = $('#delay').css("background-color");
+	$('#pegel').css("background-color" , "rgb(" + g + "," + g + "," + r +")" );
+		pegelKomet = $('#pegel').css("background-color");
+	$('#gain').css("background-color", "rgb(" + b + "," + r + "," + g +")" );
+		gainKomet = $('#gain').css("background-color");
+	$('#panning').css("background-color", "rgb(" + g + "," + b + "," + b +")" );
+		panningKomet = $('#panning').css("background-color");
+	$('#delay').css("background-color", "rgb(" + r + "," + r + "," + b +")" );
+		delayKomet = $('#delay').css("background-color");
 
-colorKometen.push(pegelKomet, gainKomet, panningKomet, delayKomet );
+	colorKometen.push(pegelKomet, gainKomet, panningKomet, delayKomet );
 
-return pegelKomet, gainKomet, panningKomet, delayKomet;
+	return pegelKomet, gainKomet, panningKomet, delayKomet;
 
 }
-function updateColors(){
-	
-}
+
 //vielleicht doch Pressmove?
 function changeColorBgrd(){	
+
 	innerCircle.on("pressmove", function (event) {
-	//clickTemp = 1;
+	
 	getMousePosition();
 	calculateRGB();
 	setColorBgrd ();
 	setColorInnerCircle();
-//	getColorKomet();
-//	console.log(r, g, b);
-	console.log(o, l);
-	
-	//
+
+	console.log("O: "+getO()+", L: "+ getL());
+		
 	});
 }
+
 function changeMouseCursor(){
+
 	innerCircle.on("mouseover", function (event) {
 		$('html,body').css('cursor','crosshair');
 		 $('.infos').html('<p>'+ infosFunc[0] + '</p>');
@@ -103,26 +91,27 @@ function changeMouseCursor(){
 	innerCircle.on("mouseout", function (event) {
 		$('html,body').css('cursor','context-menu');
 		 $('.infos').html('');
-	});
-	
+	});	
 }
- function calculateRGB(){
+
+function calculateRGB(){
 	 if(tempX < 38 || tempY < 38){
-	 r = 255 / 50 + 2 * tempX;
-	 g = 255 / 50 +  2 * tempY;
-	 b = 255 / tempY;
-	 
-	 	
-	 o = r;
-	 l = b;
-	 console.log("Von changeColor-> X: "+tempX+" Y: "+ tempY);
-	 console.log("R: "+getR()+", G: "+getG()+", B: "+ getB());
+	 	r = 255 / 50 + 2 * tempX;
+	 	g = 255 / 50 +  2 * tempY;
+	 	b = 255 / tempY;
+	  	
+	 	o = r;
+	 	l = b;
+	 	console.log("Von changeColor-> X: "+tempX+" Y: "+ tempY);
+	 	console.log("R: "+getR()+", G: "+getG()+", B: "+ getB());
 	 }
+
 	 if(tempX > 38 || tempY > 38){
 		 setOrginialBgrd();
 		 optionsSettingStandart();
 	 }
-	//Choose Mood
+	 
+	//Select Mood
 	if(tempX < 9 || tempY < 9){
 		optionsSetting1();
 	}else if((tempX < 19 || tempY < 19) && (tempX > 9 || tempY > 9)){
@@ -132,26 +121,21 @@ function changeMouseCursor(){
 	}else if((tempX < 38 || tempY < 38) && (tempX > 28 || tempY > 28)){
 		optionsSetting4();
 	}
-
-
-
-
  }
 
  function setOrginialBgrd() {
-//		$('body').css("background-color", "rgb(2, 10, 40)");	
-//		cmdInnerFill.style = "rgb(3,29,126))";
-	 	r = 2;
-	 	g = 10;
-	 	b = 40;
-	 	
-	 	l = 3;
-	 	o = 29;
-	 	u = 126;
-		
-	}
 
-//Nicht länger benötigt
+	 r = 2;
+	 g = 10;
+	 b = 40;
+	 	
+	 l = 3;
+	 o = 29;
+	 u = 126;
+		
+}
+
+//Returns für Logs
 
 function getR(){
 	return r;

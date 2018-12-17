@@ -6,6 +6,7 @@ var cmdKomet = [];
 var body = document.getElementsByTagName("body");
 var idArray = ['#threshold', '#gain', '#panning', '#delay', '#ratio', '#knee', '#attack', '#release', '#frequency', '#detune', '#q'];
 var nameArray = ['Threshold', 'Gain', 'Panning', 'Delay', 'Ratio', 'Knee', 'Attack', 'Release', 'Frequency', 'Detune', 'Q'];
+
 $( document ).ready(function(event)  {
 
 	changeLabel();
@@ -26,148 +27,122 @@ function changeLabel(event) {
 	for(var i = 0; i < idArray.length; i++){
 		
 		$(idArray[i]).mouseout(function() {
-			$('p').remove();});
+			$('p').remove();
+		});
 	}
 }
 
 //Name aus HTML-Attribut auslesen und einfügen
 function changeId() {
-	 setting = $(event.target).attr('name');
+	setting = $(event.target).attr('name');
 	
-		$('.settingsLabel').html('<p>' + setting + '</p>');
+	$('.settingsLabel').html('<p>' + setting + '</p>');
 		
-		if(setting == "Threshold"){
-			$('.infos').html('<p>'+ infos[0] + '</p>')
-		}
-		if(setting == "Gain"){
-
-			$('.infos').html('<p>'+ infos[1] + '</p>')
-		}
-		if(setting == "Panning"){
-			$('.infos').html('<p>'+ infos[2] + '</p>')
-		}
-		if(setting == "Delay"){
-			$('.infos').html('<p>'+ infos[3] + '</p>')
-		}
-		if(setting == "Ratio"){
-			$('.infos').html('<p>'+ infos[4] + '</p>')
-		}
-		if(setting == "Knee"){
-			$('.infos').html('<p>'+ infos[5] + '</p>')
-		}
-		if(setting == "Attack"){
-			$('.infos').html('<p>'+ infos[6] + '</p>')
-		}
-		if(setting == "Release"){
-			$('.infos').html('<p>'+ infos[7] + '</p>')
-		}
-		if(setting == "Frequency"){
-			$('.infos').html('<p>'+ infos[8] + '</p>')
-		}
-		if(setting == "Detune"){
-			$('.infos').html('<p>'+ infos[9] + '</p>')
-		}
-		if(setting == "Q"){
-			$('.infos').html('<p>'+ infos[10] + '</p>')
-		}
+	if(setting == "Threshold"){
+		$('.infos').html('<p>'+ infos[0] + '</p>')
+	}else if(setting == "Gain"){
+		$('.infos').html('<p>'+ infos[1] + '</p>')
+	}else if(setting == "Panning"){
+		$('.infos').html('<p>'+ infos[2] + '</p>')
+	}else if(setting == "Delay"){
+		$('.infos').html('<p>'+ infos[3] + '</p>')
+	}else if(setting == "Ratio"){
+		$('.infos').html('<p>'+ infos[4] + '</p>')
+	}else if(setting == "Knee"){
+		$('.infos').html('<p>'+ infos[5] + '</p>')
+	}else if(setting == "Attack"){
+		$('.infos').html('<p>'+ infos[6] + '</p>')
+	}else if(setting == "Release"){
+		$('.infos').html('<p>'+ infos[7] + '</p>')
+	}else if(setting == "Frequency"){
+		$('.infos').html('<p>'+ infos[8] + '</p>')
+	}else if(setting == "Detune"){
+		$('.infos').html('<p>'+ infos[9] + '</p>')
+	}else if(setting == "Q"){
+		$('.infos').html('<p>'+ infos[10] + '</p>')
+	}
 }
  
-//
- function addNumbers() {
+function addNumbers() {
 	
- for(var i = 0; i < idArray.length; i++){ 
-		 $(idArray[i]).one('click', function(event) {
-			 addNumberTo();			
-		 });
- }
-	
- }  
+ 	for(var i = 0; i < idArray.length; i++){ 
+		$(idArray[i]).one('click', function(event) {
+			addNumberTo();			
+		});
+ 	}
+} 
+ 
 //Kometen Erkennungsnummern zuweisen
 function addNumberTo () {
 	nameOfElement = $(event.target).attr('name');	
-	 setNumber();
-	 addKomet(event);
+	setNumber();
+	addKomet(event);
 	 
-	 function setNumber(){
+	function setNumber(){
 	
-		 for(var i = 0; i < nameArray.length; i++){ 
+		for(var i = 0; i < nameArray.length; i++){ 
 			 
-			 if(nameOfElement == nameArray[i]){
-				 number = i;
-				
-			 	}
-	 }
-
-	 }
+			if(nameOfElement == nameArray[i]){
+				number = i;
+			}
+	 	}
+	}
 }
 
 //Eigenschaften der Kometen aus Array auslesen und anhand der number filtern
 function addKometSettings(){
-			 if(number != null){
-				Komet.forEach(function (m, i) {
-//					//console.log(m[i]);
-					if(i == number){
-						for(eigenschaft in m){
+	if(number != null){
+		Komet.forEach(function (m, i) {
+
+			if(i == number){
+
+				for(eigenschaft in m){
 							
-							if(eigenschaft == "Name"){
+					if(eigenschaft == "Name"){
 								
-							line =  m.Line;
-							cont = m.Container;
-							shape = m.Name;
-							color = m.Farbe;
-							rote = m.Rotation;
+						line =  m.Line;
+						cont = m.Container;
+						shape = m.Name;
+						color = m.Farbe;
+						rote = m.Rotation;
 							
-//							drawSymbol = m.Symbol; //eventuell noch zum ändern der Symbole
+						//drawSymbol = m.Symbol; //eventuell noch zum ändern der Symbole
 							
-							shapesOfArray = [];	
-							shapesOfArray.push(line, cont, shape, color, rote);
-							
-							
-							}
-							
-							
-						
-						}
-					} 
-				
-				 });
-			 }	 
-			
+						shapesOfArray = [];	
+						shapesOfArray.push(line, cont, shape, color, rote);
+														
+					}						
 				}
+			} 				
+		});
+	}	 
+}
 
 var rads;
 var angle;
 var containerArray = [];
 var shapesOfArray = [];
 var coloredAddedKomet = [];
- function addKomet(event){
+
+function addKomet(event){
 	 
-	 //Werte aus Komet-Array auslesen
-	 addKometSettings();
-	 //jeweils 5 Werte in ein neues array packen
-	 let a = shapesOfArray.slice(0, 5);
-//	 let b = shapesOfArray.slice(5, 10);
-//	 let c = shapesOfArray.slice(10, 15);
-//	 let d = shapesOfArray.slice(15, 20);
-	 
-//	 console.log(a);
-//	 console.log(b);
-//	 console.log(c);
-//	 console.log(d);
+	//Werte aus Komet-Array auslesen
+	addKometSettings();
+	//jeweils 5 Werte in ein neues array packen
+	let a = shapesOfArray.slice(0, 5);
 
-	 containerArray = [];
-	 containerArray.push(a);
+	containerArray = [];
+	containerArray.push(a);
 
-	 var color = new Array();
-
-	 var cont = new Array();
-	 var shape= new Array();
-	 var name= new Array();
-	 var line= new Array();
-	 var rote= new Array();
-	 var rote= new Array();
+	var color = new Array();
+	var cont = new Array();
+	var shape= new Array();
+	var name= new Array();
+	var line= new Array();
+	var rote= new Array();
+	var rote= new Array();
 	
-	 for(let i = 0; i < containerArray.length; i ++){ 
+	for(let i = 0; i < containerArray.length; i ++){ 
 		
 		for(let k = 0; k < 1; k ++){ 
 			line[i] = containerArray[i][0];
@@ -181,8 +156,7 @@ var coloredAddedKomet = [];
 			shape[i]= new createjs.Shape();
 			line[i] = new createjs.Shape();
 			cont[i] = new createjs.Container(); 
-				
-			
+							
 			//Container
 			cont[i].x = 750;
 			cont[i].y = 350;
@@ -195,7 +169,8 @@ var coloredAddedKomet = [];
 			line[i].regY = 0;
 			line[i].setBounds(0, 0, 1, 150);
 	    		
-	    	stage.update(); 
+	    	stage.update();
+	    	 
 	    	//Circle	
 	    	cmdKomet[i] = shape[i].graphics.beginFill(color[i]).command;
 	    	shape[i].graphics.drawCircle(0, 0, 15);
@@ -210,265 +185,191 @@ var coloredAddedKomet = [];
 	    			  
 	    	stage.addChild(cont[i]);	
 	    	stage.update();
-	    				
-	    	
+	    					    	
 	    	//Events in Closures
 	    	//Komet um den Mittelpunkt rotieren
 	    	shape[i].addEventListener('pressmove', (function(temp) {
 	    						 
-	    		 return function(){
+	    		return function(){
 	    					           
 	    			rads = Math.atan2(stage.mouseY - cont[i].y, stage.mouseX - cont[i].x); 
 	    			angle = rads * (180 / Math.PI);
 	    			cont[i].rotation = angle + 90;
-//	    		    console.log(cont[i].x, cont[i].y);
-//	    		    console.log(line[i].regX, line[i].regY);
-//	    		    console.log(cont[i].getTransformedBounds().height+"Höhe");
-//	    		    console.log(cont[i].getTransformedBounds().width+"Breite");
-	    					       }
-	    	  }(i)));
 
-	    	//Mausposition ermitteln		
-	    	
-	    	
+	    		}
+	    	}(i)));
+
+	    	//Mausposition ermitteln			    		    	
 	    	shape[i].on("mousedown", function (event) {
 	  		
 	    		return function(){
 	    			 			
 	    			this.initial = {
-	    					         x: Math.abs(-(cont[i].x - stage.mouseX)),
-	    					         y: Math.abs(cont[i].y - stage.mouseY)
-	    					       };
+	    				x: Math.abs(-(cont[i].x - stage.mouseX)),
+	    				y: Math.abs(cont[i].y - stage.mouseY)
+	    			};
 	    			
-	    					}
+	    		}
 	    	}(i));
 	    	
 	    	//Leerzeichen drücken
-	    	spaceDef();
-	    	
+	    	spaceDef();	    	
 	    	var heightLine;
+
 	    	//Komet verkleinern und vergrößern			 
-	    	 shape[i].on("pressmove", function(event) {	
-	    		
-	    		
-	    		 return function(){
-	    		//Maustaste drücken und Leerzeichen-Taste drücken um den Kometen in der Y-Achse zu ändern
+	    	shape[i].on("pressmove", function(event) {	
+	    			    		
+	    		return function(){
+	    			//Maustaste drücken und Leerzeichen-Taste drücken um den Kometen in der Y-Achse zu ändern
 	    			if(spacePressed == true){	
 	    								
-	    			this.offset = {
-	    						    x: Math.abs(-(cont[i].x - stage.mouseX)),
-	    						    y: Math.abs(cont[i].y - stage.mouseY)
-	    						   };	
+	    				this.offset = {
+	    					x: Math.abs(-(cont[i].x - stage.mouseX)),
+	    					y: Math.abs(cont[i].y - stage.mouseY)
+	    				};	
 	    								
+	    				scaleTemp = this.offset.y / this.initial.y;
+	    				scaleTempX = this.offset.x / this.initial.x;
 	    			
-	    			scaleTemp = this.offset.y / this.initial.y;
-	    			scaleTempX = this.offset.x / this.initial.x;
-	    			
-	    			//Scale Kalkulation für x-und y-Achse
-//	    			--> Scale-Maximun(y=100)
-	    			 if (scaleTemp < 1.02 && scaleTemp > 0.21  ){	
-	    				 	if (this.initial.x > this.initial.y) { 
-	    		        //X-Achse
+	    				//Scale Kalkulation für x-und y-Achse
+						//--> Scale-Maximun(y=100)
+	    			 	if (scaleTemp < 1.02 && scaleTemp > 0.21  ){	
+	    				 	if (this.initial.x > this.initial.y){ 
+	    		        		//X-Achse
 	    				 		if (scaleTempX < 1.02 && scaleTempX > 0.21){
 	    				 			console.log("Scale " + scaleTempX);
 	    				 			cont[i].scaleY = this.offset.x / this.initial.x;
 	    				 			shape[i].scaleX = scaleTempX; //gleichzeitiges Verkleinern des Kometenkopfes?
-	    				 	
 	    				 		}	
-	    				 	} else if (this.initial.x < this.initial.y) {
-	    				 		
-	    		        //Y-Achse
-	    		    				cont[i].scaleY = this.offset.y / this.initial.y;
-	    		    				shape[i].scaleX = scaleTemp; //gleichzeitiges Verkleinern des Kometenkopfes?
-	    		    				
-	    				 		
-	    				 	} 
-	    		    		
-	    			 }
+	    				 	}else if (this.initial.x < this.initial.y){	    				 		
+	    		        		//Y-Achse
+	    		    			cont[i].scaleY = this.offset.y / this.initial.y;
+	    		    			shape[i].scaleX = scaleTemp; //gleichzeitiges Verkleinern des Kometenkopfes?	
+	    				 	} 	    		    		
+	    			 	}
 	    			
-	    			console.log("scale" + scaleTemp);
+	    				console.log("scale" + scaleTemp);
 	    			
-					//TEST Kalkulieren der einzelnen Kometen
-	    			//Ersetzung durch if+if else?
+						//TEST Kalkulieren der einzelnen Kometen
+	    				//Ersetzung durch if+if else?
 	    			
-	    			if(name[i] == "Threshold"){
+	    				if(name[i] == "Threshold"){
     					
-    					var point = cont[i].getBounds().height;
- 						heightLine = point * scaleTemp; 
-    					regulateThreshold(heightLine);
-    					console.log(heightLine+"Liniengröße und zahl: "+name[i]);
+    						var point = cont[i].getBounds().height;
+ 							heightLine = point * scaleTemp; 
+    						regulateThreshold(heightLine);
+    						console.log(heightLine+"Liniengröße und zahl: "+name[i]);
  						    					 
-    				 }
-    				 if(name[i] == "Gain"){
+    				 	}else if(name[i] == "Gain"){
     					
-    					var point = cont[i].getBounds().height;
- 						heightLine = point * scaleTemp; 
-    					regulateGain(heightLine);
-    					console.log(heightLine+"Liniengröße und zahl: "+name[i]);
+    						var point = cont[i].getBounds().height;
+ 							heightLine = point * scaleTemp; 
+    						regulateGain(heightLine);
+    						console.log(heightLine+"Liniengröße und zahl: "+name[i]);
  						
-    				 }
-    				 if(name[i] == "Panning"){
+    				 	}else if(name[i] == "Panning"){
 
-    					var point = cont[i].getBounds().height;
- 						heightLine = point * scaleTemp;
- 						regulatePanning(heightLine);
- 						console.log(heightLine+"Liniengröße und zahl: "+name[i]);
+    						var point = cont[i].getBounds().height;
+ 							heightLine = point * scaleTemp;
+ 							regulatePanning(heightLine);
+ 							console.log(heightLine+"Liniengröße und zahl: "+name[i]);
  						    					
-    				 }
-    				 if(name[i] == "Delay"){
+    				 	}else if(name[i] == "Delay"){
     					
-						var point = cont[i].getBounds().height;
- 						heightLine = point * scaleTemp;
-    					regulateDelay(heightLine);
-    					console.log(heightLine+"Liniengröße und zahl: "+name[i]);
+							var point = cont[i].getBounds().height;
+ 							heightLine = point * scaleTemp;
+    						regulateDelay(heightLine);
+    						console.log(heightLine+"Liniengröße und zahl: "+name[i]);
  						   					
-    				 }
-    				 if(name[i] == "Ratio"){
+    				 	}else if(name[i] == "Ratio"){
 
-						var point = cont[i].getBounds().height;
- 						heightLine = point * scaleTemp;
-						regulateRatio(heightLine);
-    				 	console.log(heightLine+"Liniengröße und zahl: "+name[i]);
+							var point = cont[i].getBounds().height;
+ 							heightLine = point * scaleTemp;
+							regulateRatio(heightLine);
+    				 		console.log(heightLine+"Liniengröße und zahl: "+name[i]);
 
-    				 }
-    				 if(name[i] == "Knee"){
+    				 	}else if(name[i] == "Knee"){
 
-    				 	var point = cont[i].getBounds().height;
- 						heightLine = point * scaleTemp;
-						regulateKnee(heightLine);
-    				 	console.log(heightLine+"Liniengröße und zahl: "+name[i]);
+    				 		var point = cont[i].getBounds().height;
+ 							heightLine = point * scaleTemp;
+							regulateKnee(heightLine);
+    				 		console.log(heightLine+"Liniengröße und zahl: "+name[i]);
 
-    				 }
-    				 if(name[i] == "Attack"){
+    				 	}else if(name[i] == "Attack"){
 
-    				 	var point = cont[i].getBounds().height;
- 						heightLine = point * scaleTemp;
-						regulateAttack(heightLine);
-    				 	console.log(heightLine+"Liniengröße und zahl: "+name[i]);
+    				 		var point = cont[i].getBounds().height;
+ 							heightLine = point * scaleTemp;
+							regulateAttack(heightLine);
+    				 		console.log(heightLine+"Liniengröße und zahl: "+name[i]);
 
-    				 }
-    				 if(name[i] == "Release"){
+    				 	}else if(name[i] == "Release"){
 
-    				 	var point = cont[i].getBounds().height;
- 						heightLine = point * scaleTemp;
-						regulateRelease(heightLine);
-    				 	console.log(heightLine+"Liniengröße und zahl: "+name[i]);
+    				 		var point = cont[i].getBounds().height;
+ 							heightLine = point * scaleTemp;
+							regulateRelease(heightLine);
+    				 		console.log(heightLine+"Liniengröße und zahl: "+name[i]);
 
-    				 }
-    				 if(name[i] == "Frequency"){
+    				 	}else if(name[i] == "Frequency"){
 
-    				 	var point = cont[i].getBounds().height;
- 						heightLine = point * scaleTemp;
-						regulateFrequency(heightLine);
-    				 	console.log(heightLine+"Liniengröße und zahl: "+name[i]);
+    				 		var point = cont[i].getBounds().height;
+ 							heightLine = point * scaleTemp;
+							regulateFrequency(heightLine);
+    				 		console.log(heightLine+"Liniengröße und zahl: "+name[i]);
 
-    				 }
-    				 if(name[i] == "Detune"){
+    				 	}else if(name[i] == "Detune"){
 
-    				 	var point = cont[i].getBounds().height;
- 						heightLine = point * scaleTemp;
-						regulateDetune(heightLine);
-    				 	console.log(heightLine+"Liniengröße und zahl: "+name[i]);
+    				 		var point = cont[i].getBounds().height;
+ 							heightLine = point * scaleTemp;
+							regulateDetune(heightLine);
+    				 		console.log(heightLine+"Liniengröße und zahl: "+name[i]);
 
-    				 }
-    				 if(name[i] == "Q"){
+    				 	}else if(name[i] == "Q"){
 
-    				 	var point = cont[i].getBounds().height;
- 						heightLine = point * scaleTemp;
- 						regulateQ(heightLine);
-    				 	console.log(heightLine+"Liniengröße und zahl: "+name[i]);
+    				 		var point = cont[i].getBounds().height;
+ 							heightLine = point * scaleTemp;
+ 							regulateQ(heightLine);
+    				 		console.log(heightLine+"Liniengröße und zahl: "+name[i]);
     				 	
-    				 }	
-
-	    			 stage.update();
-	    			
-	    				  }
-	    			
-	    						 }
-	    		 
-	    	 }(i));
-	    	
-	    	// updateColor(i);
+    				 	}	
+	    			 	stage.update();	    			
+	    			}	
+	    		}	    		 
+	    	}(i));
+	    		    	
 	    	//Info bei Mouseover anzeigen
-		    	shape[i].addEventListener('mouseover', (function(event) {
+		    shape[i].addEventListener('mouseover', (function(event) {
 		    		
-		    		return function(event){
-		    			$('#infoText').text(name[i]);
-		    			// var left = Math.abs(-(shape[i].x - stage.mouseX) );
-		    		    // var top = Math.abs(shape[i].y - stage.mouseY);
-		    		     $('#infoText').show();
-		    		     $('.infos').html('<p>'+ infosFunc[1] + '</p>');
-		    		   //   console.log (left, top);
-		    			
-		    		}
-		    		  }(i)));
-		    	//Info bei Mouseout ausblenden 
-		    	shape[i].addEventListener('mouseout', (function(event) {
-		    		return function(){
-		    			$('#infoText').hide();
-		    			 $('.infos').html('');	
-		    				
-		    				
-		    		}
-		    		
-		    		  }(i))); 	
-	    	 
-	 //Hinzugefügten Kometen aktuelle Farbe zuweisen   		 
+		    	return function(event){
+		    		$('#infoText').text(name[i]);		    			
+		    		$('#infoText').show();
+		    		$('.infos').html('<p>'+ infosFunc[1] + '</p>');
+		    		   	
+		    	}
+		    }(i)));
 		    
-		    	
-	    							stage.update();
-	    				
-	}	
-	    				
- }
-	
-	 
+		    //Info bei Mouseout ausblenden 
+		    shape[i].addEventListener('mouseout', (function(event) {
+		    	return function(){
+		    		$('#infoText').hide();
+		    		$('.infos').html('');				
+		    	}		    		
+		    }(i))); 	
+	    		
+	    	stage.update();	    				
+		}	
+	}
+}
 
- }
- function spaceDef() {
- 
-	
+function spaceDef() {
+ 	
 	$(window).keydown(function(evt) {
-	  if (evt.which == 32) { // Space
-		  spacePressed = true;
-	  }
+	 	if (evt.which == 32) { // Space
+		 	spacePressed = true;
+	  	}
 	}).keyup(function(evt) {
-	  if (evt.which == 32) { // Space
-		  spacePressed = false;
-	  }
-});
- }
- //Farbe der Kometen ändern --> Fehler bei der Aktualisierung
-// function updateColor(i){ 	
-//	 
-//	   	if(clickTemp == 1){	
-//	   		
-//	   		addColor(i);
-//	   	}
-//	   
-// }
-//
-// function addColor(i){
-//
-//	 if(number == 0){
-//		 cmdKomet[i].style = "" + colorKometen[0] + "";
-//		 
-//	 }
-//	 if(number == 1){
-//		 cmdKomet[i].style = "" + colorKometen[1] + "";
-//		 
-//	 }
-//	 if(number == 2){
-//		 cmdKomet[i].style = "" + colorKometen[2] + "";
-//		
-//	 }
-//	 if(number == 3){
-//		 cmdKomet[i].style = "" + colorKometen[3] + "";
-//		
-//	 }
-//	 
-//	 stage.update();
-// }
-
-	
+	  	if (evt.which == 32) { // Space
+		  	spacePressed = false;
+	  	}
+	});
+}	
 	  

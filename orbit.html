@@ -2,72 +2,59 @@
 <html lang="de">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Orbit: Tobias Pleß & Inga Fuhrmann</title>
-<link href="css/orbitStyle.css" rel="stylesheet" type="text/css" />
-<script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Orbit: Tobias Pleß & Inga Fuhrmann</title>
+  <link href="css/orbitStyle.css" rel="stylesheet" type="text/css" />
+  <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body onload="init()">
-   <header>
-   	<div class="headerWrap">
-    	<img class="logo" src="img/logo.png" alt="logo" onclick="location.href='orbit.html'">
+  <header>
+    <div class="headerWrap">
+      <img class="logo" src="img/logo.png" alt="logo" onclick="location.href='orbit.html'">
     </div>
   </header>
   <div id="mainWrap" >
-   		<nav>
-   			<h3>Infobox</h3>
-   			<div id="buttonWrap">
-   			<button id="playStopButton">Play</button>
-   			<div id="play"></div>
-   			<div id="stop"></div>
-   			
-   			<div id="songWrap">
-   			
-   			<div id="songTitel"></div>
-   			</div>
-   			</div>
-
-   			<div id="navSettings">
-   				<div id="threshold" class="settings" name="Threshold"></div>
-   				<div id="gain" class="settings" name="Gain"></div>
-   				<div id="panning" class="settings" name="Panning"></div>
-   				<div id="delay" class="settings" name="Delay"></div>
-   				<div id="ratio" class="settings" name="Ratio"></div>
-   				<div id="knee" class="settings" name="Knee"></div>
-   				<div id="attack" class="settings" name="Attack"></div>
-   				<div id="release" class="settings" name="Release"></div>
-   				<div id="frequency" class="settings" name="Frequency"></div>
-   				<div id="detune" class="settings" name="Detune"></div>
-   				<div id="q" class="settings" name="Q"></div>
-   				<div id="platzhalter" class="settings" name="platzhalter"></div>
-   				<div class="settingsLabel"> </div>
-   			</div>
-   			<div class="infos">
-   			
-   			</div>
-  		</nav>
-   		<div id="infoText">Test</div>
-   		<div id="infoValue">Value</div>
-  		<canvas id="main" width="1200" height="700" ondrop="dropHandler(event)" ondragover="dragOverHandler(event)">
-   		</canvas> 
-   		
-
+    <nav>
+      <h3>Infobox</h3>
+   	  <div id="buttonWrap">
+        <button id="playStopButton">Play</button>
+   		<div id="play"></div>
+   		<div id="stop"></div>
+   		<div id="songWrap">
+          <div id="songTitel"></div>
+   		</div>
+   	  </div>
+   	  <div id="navSettings">
+   	    <div id="threshold" class="settings" name="Threshold"></div>
+   		<div id="gain" class="settings" name="Gain"></div>
+   		<div id="panning" class="settings" name="Panning"></div>
+   		<div id="delay" class="settings" name="Delay"></div>
+   		<div id="ratio" class="settings" name="Ratio"></div>
+   		<div id="knee" class="settings" name="Knee"></div>
+   		<div id="attack" class="settings" name="Attack"></div>
+   		<div id="release" class="settings" name="Release"></div>
+   		<div id="frequency" class="settings" name="Frequency"></div>
+   		<div id="detune" class="settings" name="Detune"></div>
+   		<div id="q" class="settings" name="Q"></div>
+   		<div id="platzhalter" class="settings" name="platzhalter"></div>
+   		<div class="settingsLabel"> </div>
+   	  </div>
+   	  <div class="infos"></div>
+    </nav>    
+   	<div id="infoText">Test</div>
+   	<div id="infoValue">Value</div>
+  	<canvas id="main" width="1200" height="700" ondrop="dropHandler(event)" ondragover="dragOverHandler(event)">
+   	</canvas> 
   </div> 
-  	 <script type="text/javascript" src="js/symbolArray.js"></script> 
-  	 <script type="text/javascript" src="js/addKomet.js"></script>
-     <script type="text/javascript" src="js/orbitCircles.js"></script>
-     <script type="text/javascript" src="js/dropConfig.js"></script>
-     <script type="text/javascript" src="js/changeColor.js"></script>
-     <script type="text/javascript" src="js/playMusic.js"></script>
- 	<script type="text/javascript" src="js/progressBar.js"></script>
- 	<script type="text/javascript" src="js/infoText.js"></script>
+  <script type="text/javascript" src="js/symbolArray.js"></script> 
+  <script type="text/javascript" src="js/addKomet.js"></script>
+  <script type="text/javascript" src="js/orbitCircles.js"></script>
+  <script type="text/javascript" src="js/dropConfig.js"></script>
+  <script type="text/javascript" src="js/changeColor.js"></script>
+  <script type="text/javascript" src="js/playMusic.js"></script>
+  <script type="text/javascript" src="js/progressBar.js"></script>
+  <script type="text/javascript" src="js/infoText.js"></script>
 </body>
-
-
-
-
-
 
 </html>
