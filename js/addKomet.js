@@ -124,6 +124,7 @@ var containerArray = [];
 var shapesOfArray = [];
 var coloredAddedKomet = [];
 
+
 function addKomet(event){
 	 
 	//Werte aus Komet-Array auslesen
@@ -252,12 +253,26 @@ function addKomet(event){
 	    			
 						//TEST Kalkulieren der einzelnen Kometen
 	    				//Ersetzung durch if+if else?
-	    			
+	    				var thresholdValue = getThresholdValue().toFixed(3);
+	    				var gainValue = getGainValue().toFixed(3);
+	    				var panValue = getPanningValue().toFixed(3);
+	    				var delayValue = getDelayValue().toFixed(3);
+	    				var ratioValue = getRatioValue().toFixed(3);
+	    				var kneeValue = getKneeValue().toFixed(3);
+	    				var attackValue = getAttackValue().toFixed(3);
+	    				var relValue = getReleaseValue().toFixed(3);
+//	    				var frequValue = getFrequencyValue().toFixed(3);;
+//	    				var detuneValue = getDetuneValue().toFixed(3);
+//	    				var qValue = getQValue().toFixed(3);
+	    				
 	    				if(name[i] == "Threshold"){
     					
     						var point = cont[i].getBounds().height;
  							heightLine = point * scaleTemp; 
     						regulateThreshold(heightLine);
+    						$('#infoValue').text(thresholdValue + " dB");  
+    						$('#infoText').text(name[i]);		    			
+    			    		$('#infoText').show();
     						console.log(heightLine+"Liniengröße und zahl: "+name[i]);
  						    					 
     				 	}else if(name[i] == "Gain"){
@@ -265,6 +280,9 @@ function addKomet(event){
     						var point = cont[i].getBounds().height;
  							heightLine = point * scaleTemp; 
     						regulateGain(heightLine);
+    						$('#infoValue').text(gainValue + " dB");  
+    						$('#infoText').text(name[i]);		    			
+    			    		$('#infoText').show();
     						console.log(heightLine+"Liniengröße und zahl: "+name[i]);
  						
     				 	}else if(name[i] == "Panning"){
@@ -272,6 +290,9 @@ function addKomet(event){
     						var point = cont[i].getBounds().height;
  							heightLine = point * scaleTemp;
  							regulatePanning(heightLine);
+ 							$('#infoValue').text(panValue + " LR");  
+    						$('#infoText').text(name[i]);		    			
+    			    		$('#infoText').show();
  							console.log(heightLine+"Liniengröße und zahl: "+name[i]);
  						    					
     				 	}else if(name[i] == "Delay"){
@@ -279,6 +300,9 @@ function addKomet(event){
 							var point = cont[i].getBounds().height;
  							heightLine = point * scaleTemp;
     						regulateDelay(heightLine);
+    						$('#infoValue').text(delayValue + " sec");  
+    						$('#infoText').text(name[i]);		    			
+    			    		$('#infoText').show();
     						console.log(heightLine+"Liniengröße und zahl: "+name[i]);
  						   					
     				 	}else if(name[i] == "Ratio"){
@@ -286,6 +310,9 @@ function addKomet(event){
 							var point = cont[i].getBounds().height;
  							heightLine = point * scaleTemp;
 							regulateRatio(heightLine);
+							$('#infoValue').text(ratioValue + " dB");  
+    						$('#infoText').text(name[i]);		    			
+    			    		$('#infoText').show();
     				 		console.log(heightLine+"Liniengröße und zahl: "+name[i]);
 
     				 	}else if(name[i] == "Knee"){
@@ -293,6 +320,9 @@ function addKomet(event){
     				 		var point = cont[i].getBounds().height;
  							heightLine = point * scaleTemp;
 							regulateKnee(heightLine);
+							$('#infoValue').text(kneeValue + " dB");  
+    						$('#infoText').text(name[i]);		    			
+    			    		$('#infoText').show();
     				 		console.log(heightLine+"Liniengröße und zahl: "+name[i]);
 
     				 	}else if(name[i] == "Attack"){
@@ -300,6 +330,9 @@ function addKomet(event){
     				 		var point = cont[i].getBounds().height;
  							heightLine = point * scaleTemp;
 							regulateAttack(heightLine);
+							$('#infoValue').text(attackValue + " degree");  
+    						$('#infoText').text(name[i]);		    			
+    			    		$('#infoText').show();
     				 		console.log(heightLine+"Liniengröße und zahl: "+name[i]);
 
     				 	}else if(name[i] == "Release"){
@@ -307,26 +340,41 @@ function addKomet(event){
     				 		var point = cont[i].getBounds().height;
  							heightLine = point * scaleTemp;
 							regulateRelease(heightLine);
+							$('#infoValue').text(relValue + " dB");  
+    						$('#infoText').text(name[i]);		    			
+    			    		$('#infoText').show();
     				 		console.log(heightLine+"Liniengröße und zahl: "+name[i]);
 
+    				 		
+   //Fehler: filter not defied?
+    				 		
     				 	}else if(name[i] == "Frequency"){
 
     				 		var point = cont[i].getBounds().height;
  							heightLine = point * scaleTemp;
 							regulateFrequency(heightLine);
     				 		console.log(heightLine+"Liniengröße und zahl: "+name[i]);
-
+ //   				 		$('#infoValue').text(frequValue + " Hz");  
+//    						$('#infoText').text(name[i]);		    			
+//    			    		$('#infoText').show();
+    				 		
     				 	}else if(name[i] == "Detune"){
 
     				 		var point = cont[i].getBounds().height;
  							heightLine = point * scaleTemp;
 							regulateDetune(heightLine);
+//							$('#infoValue').text(detuneValue + " cents");  
+//    						$('#infoText').text(name[i]);		    			
+//    			    		$('#infoText').show();
     				 		console.log(heightLine+"Liniengröße und zahl: "+name[i]);
 
     				 	}else if(name[i] == "Q"){
 
     				 		var point = cont[i].getBounds().height;
  							heightLine = point * scaleTemp;
+// 							$('#infoValue').text(detuneValue);  
+//    						$('#infoText').text(name[i]);		    			
+//    			    		$('#infoText').show();
  							regulateQ(heightLine);
     				 		console.log(heightLine+"Liniengröße und zahl: "+name[i]);
     				 	
@@ -343,7 +391,7 @@ function addKomet(event){
 		    		$('#infoText').text(name[i]);		    			
 		    		$('#infoText').show();
 		    		$('.infos').html('<p>'+ infosFunc[1] + '</p>');
-		    		   	
+		    		
 		    	}
 		    }(i)));
 		    
@@ -351,9 +399,12 @@ function addKomet(event){
 		    shape[i].addEventListener('mouseout', (function(event) {
 		    	return function(){
 		    		$('#infoText').hide();
-		    		$('.infos').html('');				
+		    		$('.infos').html('');	
+		    		$('#infoValue').text('');
 		    	}		    		
 		    }(i))); 	
+		    
+		    
 	    		
 	    	stage.update();	    				
 		}	
