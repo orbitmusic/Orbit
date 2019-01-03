@@ -261,9 +261,9 @@ function addKomet(event){
 	    				var kneeValue = getKneeValue().toFixed(3);
 	    				var attackValue = getAttackValue().toFixed(3);
 	    				var relValue = getReleaseValue().toFixed(3);
-//	    				var frequValue = getFrequencyValue().toFixed(3);;
-//	    				var detuneValue = getDetuneValue().toFixed(3);
-//	    				var qValue = getQValue().toFixed(3);
+	    				var frequValue = getFrequencyValue().toFixed(3);;
+	    				var detuneValue = getDetuneValue().toFixed(3);
+	    				var qValue = getQValue().toFixed(3);
 	    				
 	    				if(name[i] == "Threshold"){
     					
@@ -346,7 +346,7 @@ function addKomet(event){
     				 		console.log(heightLine+"Liniengröße und zahl: "+name[i]);
 
     				 		
-   //Fehler: filter not defied?
+
     				 		
     				 	}else if(name[i] == "Frequency"){
 
@@ -354,27 +354,27 @@ function addKomet(event){
  							heightLine = point * scaleTemp;
 							regulateFrequency(heightLine);
     				 		console.log(heightLine+"Liniengröße und zahl: "+name[i]);
- //   				 		$('#infoValue').text(frequValue + " Hz");  
-//    						$('#infoText').text(name[i]);		    			
-//    			    		$('#infoText').show();
+    				 		$('#infoValue').text(frequValue + " Hz");  
+    						$('#infoText').text(name[i]);		    			
+    			    		$('#infoText').show();
     				 		
     				 	}else if(name[i] == "Detune"){
 
     				 		var point = cont[i].getBounds().height;
  							heightLine = point * scaleTemp;
 							regulateDetune(heightLine);
-//							$('#infoValue').text(detuneValue + " cents");  
-//    						$('#infoText').text(name[i]);		    			
-//    			    		$('#infoText').show();
+							$('#infoValue').text(detuneValue + " cents");  
+    						$('#infoText').text(name[i]);		    			
+    			    		$('#infoText').show();
     				 		console.log(heightLine+"Liniengröße und zahl: "+name[i]);
 
     				 	}else if(name[i] == "Q"){
 
     				 		var point = cont[i].getBounds().height;
  							heightLine = point * scaleTemp;
-// 							$('#infoValue').text(detuneValue);  
-//    						$('#infoText').text(name[i]);		    			
-//    			    		$('#infoText').show();
+ 							$('#infoValue').text(detuneValue);  
+    						$('#infoText').text(name[i]);		    			
+    			    		$('#infoText').show();
  							regulateQ(heightLine);
     				 		console.log(heightLine+"Liniengröße und zahl: "+name[i]);
     				 	
