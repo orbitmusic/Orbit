@@ -48,7 +48,7 @@ function setColorInnerCircle(){
 	}
 }
 
-//Veränderung der Farbe der Kometen --> wird momentan nicht aufgerufen
+
 function getColorKomet (){
 	r +=50;
 
@@ -67,7 +67,7 @@ function getColorKomet (){
 
 }
 
-//vielleicht doch Pressmove?
+
 function changeColorBgrd(){	
 
 	innerCircle.on("pressmove", function (event) {

@@ -221,7 +221,7 @@ function addKomet(event){
 	    	shape[i].on("pressmove", function(event) {	
 	    			    		
 	    		return function(){
-	    			//Maustaste drücken und Leerzeichen-Taste drücken um den Kometen in der Y-Achse zu ändern
+	    			//Maustaste drücken und Leerzeichen-Taste drücken um den Kometen in der Y/X-Achse zu ändern
 	    			if(spacePressed == true){	
 	    								
 	    				this.offset = {
@@ -240,19 +240,18 @@ function addKomet(event){
 	    				 		if (scaleTempX < 1.02 && scaleTempX > 0.21){
 	    				 			console.log("Scale " + scaleTempX);
 	    				 			cont[i].scaleY = this.offset.x / this.initial.x;
-	    				 			shape[i].scaleX = scaleTempX; //gleichzeitiges Verkleinern des Kometenkopfes?
+	    				 			shape[i].scaleX = scaleTempX; //gleichzeitiges Verkleinern des Kometenkopfes
 	    				 		}	
 	    				 	}else if (this.initial.x < this.initial.y){	    				 		
 	    		        		//Y-Achse
 	    		    			cont[i].scaleY = this.offset.y / this.initial.y;
-	    		    			shape[i].scaleX = scaleTemp; //gleichzeitiges Verkleinern des Kometenkopfes?	
+	    		    			shape[i].scaleX = scaleTemp; //gleichzeitiges Verkleinern des Kometenkopfes	
 	    				 	} 	    		    		
 	    			 	}
 	    			
 	    				console.log("scale" + scaleTemp);
 	    			
 						//TEST Kalkulieren der einzelnen Kometen
-	    				//Ersetzung durch if+if else?
 	    				var thresholdValue = getThresholdValue().toFixed(3);
 	    				var gainValue = getGainValue().toFixed(3);
 	    				var panValue = getPanningValue().toFixed(3);
