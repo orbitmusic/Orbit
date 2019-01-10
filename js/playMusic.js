@@ -11,6 +11,7 @@ var gain = context.createGain();
 var stereoPanner = context.createStereoPanner();
 var delay = context.createDelay(4.0);
 var compressor = context.createDynamicsCompressor();
+var filter = context.createBiquadFilter();
 
 //Color Moods Variables
 var safeValue1 =0;

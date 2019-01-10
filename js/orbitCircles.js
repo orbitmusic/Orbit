@@ -40,6 +40,7 @@ function init() {
     dashedCircle.y = 350;
     circleGroup.addChild(dashedCircle);
     
+    //äußererCircle
     var circle = new createjs.Shape();
     cmdCircle = circle.graphics.beginStroke("rgb(196,198,202)").command;
     circle.graphics.drawCircle(0, 0, 300);
