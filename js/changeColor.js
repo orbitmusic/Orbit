@@ -7,7 +7,7 @@ var u = 0;
 var backgrnd;
 var pegelKomet;
 var colorKometen = [];
-
+var innerCircle;
 $( document ).ready(function(event)  {	
 	
 	changeColorBgrd();

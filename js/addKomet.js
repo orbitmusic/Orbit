@@ -6,21 +6,22 @@ var cmdKomet = [];
 var body = document.getElementsByTagName("body");
 var idArray = ['#threshold', '#gain', '#panning', '#delay', '#ratio', '#knee', '#attack', '#release', '#frequency', '#detune', '#q'];
 var nameArray = ['Threshold', 'Gain', 'Panning', 'Delay', 'Ratio', 'Knee', 'Attack', 'Release', 'Frequency', 'Detune', 'Q'];
+var event = event || window.event;
 
 $( document ).ready(function(event)  {
-
+	
 	changeLabel();
-	addNumbers();
+	addNumbers(event);
 	
 });
 
 //Eigenschaften der Kometen bei Mouseover anzeigen
-function changeLabel(event) {	 
+function changeLabel() {	 
 	
 	for(var i = 0; i < idArray.length; i++){
 		
-		$(idArray[i]).mouseover(function() {			
-			changeId();		
+		$(idArray[i]).mouseover(function(event) {			
+			changeId(event);
 		});
 	}
 	
@@ -33,9 +34,10 @@ function changeLabel(event) {
 }
 
 //Name aus HTML-Attribut auslesen und einfügen
-function changeId() {
-	setting = $(event.target).attr('name');
+function changeId(event) {	
 	
+	setting = $(event.target).attr("name");
+	//console.log(setting);
 	$('.settingsLabel').html('<p>' + setting + '</p>');
 		
 	if(setting == "Threshold"){
@@ -63,17 +65,17 @@ function changeId() {
 	}
 }
  
-function addNumbers() {
+function addNumbers(event) {
 	
  	for(var i = 0; i < idArray.length; i++){ 
 		$(idArray[i]).one('click', function(event) {
-			addNumberTo();			
+			addNumberTo(event);			
 		});
  	}
 } 
  
 //Kometen Erkennungsnummern zuweisen
-function addNumberTo () {
+function addNumberTo (event) {
 	nameOfElement = $(event.target).attr('name');	
 	setNumber();
 	addKomet(event);
