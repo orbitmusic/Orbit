@@ -105,9 +105,7 @@ function addKometSettings(){
 						shape = m.Name;
 						color = m.Farbe;
 						rote = m.Rotation;
-							
-						//drawSymbol = m.Symbol; //eventuell noch zum ändern der Symbole
-							
+																			
 						shapesOfArray = [];	
 						shapesOfArray.push(line, cont, shape, color, rote);
 														
@@ -251,7 +249,7 @@ function addKomet(event){
 	    			
 	    				console.log("scale" + scaleTemp);
 	    			
-						//TEST Kalkulieren der einzelnen Kometen
+						//Kalkulieren der einzelnen Kometen
 	    				var thresholdValue = getThresholdValue().toFixed(3);
 	    				var gainValue = getGainValue().toFixed(3);
 	    				var panValue = getPanningValue().toFixed(3);
@@ -264,6 +262,7 @@ function addKomet(event){
 	    				var detuneValue = getDetuneValue().toFixed(3);
 	    				var qValue = getQValue().toFixed(3);
 	    				
+	    				//Wereänderung bei Veränderung der Länge der Kometenlinie
 	    				if(name[i] == "Threshold"){
     					
     						var point = cont[i].getBounds().height;
@@ -344,9 +343,6 @@ function addKomet(event){
     			    		$('#infoText').show();
     				 		console.log(heightLine+"Liniengröße und zahl: "+name[i]);
 
-    				 		
-
-    				 		
     				 	}else if(name[i] == "Frequency"){
 
     				 		var point = cont[i].getBounds().height;
@@ -402,9 +398,7 @@ function addKomet(event){
 		    		$('#infoValue').text('');
 		    	}		    		
 		    }(i))); 	
-		    
-		    
-	    		
+		
 	    	stage.update();	    				
 		}	
 	}

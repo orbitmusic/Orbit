@@ -1,0 +1,1 @@
+"C:\Program Files (x86)\Google\Chrome Dev\Application\chrome.exe"  --args --allow-file-access-from-files

@@ -1,5 +1,6 @@
 var playStopButton = document.getElementById("playStopButton");
 var isPlaying=false;
+var initiateProgram=true;
 
 //Audio API Content
 var context = new AudioContext();
@@ -23,8 +24,18 @@ var option3=false;
 var option4=false;
 
 function initiatePlayMusic(){
-    console.log(getMusicPath() + " initiateMusic ist gestartet"); 
-    musicPlay = new Audio(getMusicPath());
+    if(fileDropped){                        
+        console.log(getMusicName() + " wird in initiateMusic() nach Drag&Drop verwendet."); 
+        musicPlay = new Audio(getMusicName());
+        progressSim();                                      //Visuelle Bestätigung für Datei-Drop -> Grüner Ring
+        initiateProgram=false; 
+    }else{
+        console.log(getMusicName() + " wird automatisch in initiateMusic() verwendet."); 
+        musicPlay = new Audio("sounds/RedFlagMP3Short.mp3");
+        $('#songTitel').text("RedFlagMP3Short.mp3");
+        progressSim();                                      //Visuelle Bestätigung für Datei-Drop -> Grüner Ring
+        initiateProgram=false;
+    }
 
     source = context.createMediaElementSource(musicPlay);   //PART 1
     compressor = context.createDynamicsCompressor();        //PART 2
@@ -46,8 +57,10 @@ function initiatePlayMusic(){
     stereoPanner.connect(context.destination);
     
     musicPlay.loop=true; 
+    
+                                              
 
-    console.log(getMusicPath() + " initiateMusic ist abgeschlossen!");   
+    console.log(getMusicName() + " initiateMusic ist abgeschlossen!");   
 }
 
 //functions modifications PART 1
@@ -212,14 +225,17 @@ playStopButton.addEventListener("click", function(){
         $('#play').show();
         $('#stop').hide();
         console.log('Musik pausiert');   
-    } else {
-        getMusicLength();
+    } else {                            //Falls kein Drag&Drop möglich wird eine Sound Datei automatisch geladen
+        if(initiateProgram){
+            initiatePlayMusic();           
+        }
         musicPlay.play();
         playStopButton.innerHTML = "Stop";
         $('#play').hide();
         $('#stop').show();
         console.log('Musik startet');   
         console.log("StereoPanner: "+stereoPanner.pan.value);
+
     }
     isPlaying=!isPlaying
 });
@@ -231,6 +247,7 @@ musicPlay.addEventListener("ended", function (e){
 
 //Color Moods
 //Bei bereits vorhanden Zeigern werden die dazugehörigen Längen nicht geändert, aber der zugeordnete Wert schon
+//Die vorhandenen if-Abfragen schließen ein gleichzeitiges Vorkommen mehrerer Color Moods aus
 function optionsSetting1(){
     
     if(!option1){
